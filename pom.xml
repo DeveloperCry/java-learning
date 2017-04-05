@@ -1,38 +1,86 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>learning</groupId>
-  <artifactId>learning</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>learning</name>
-  <description>learning</description>
-  
-  <dependencies>
-  	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.8</version>
-	</dependency>
-  	<dependency>
-  		<groupId>org.mybatis</groupId>
-  		<artifactId>mybatis</artifactId>
-  		<version>3.4.1</version>
-  	</dependency>
-  </dependencies>
- 
-  <build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>learning</groupId>
+	<artifactId>learning</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>learning</name>
+	<description>learning</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.3-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
 		<finalName>zhuzhu</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <!-- <encoding>UTF-8</encoding> -->
-                </configuration>
-            </plugin>
-        </plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<!-- <encoding>UTF-8</encoding> -->
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>env-dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>dev</value>
+				</property>
+			</activation>
+
+			<!-- <properties>
+				<skip.main.liquibase>false</skip.main.liquibase>
+				<liquibase.master.file>src/main/resources/conf/dev/liquibase.master.properties</liquibase.master.file>
+				<liquibase.oauth.file>src/main/resources/conf/dev/liquibase.oauth.properties</liquibase.oauth.file>
+				<liquibase.file.test>src/main/resources/conf/dev/liquibase.test.dev.properties</liquibase.file.test>
+				<api.test.skip>false</api.test.skip>
+			</properties> -->
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<configuration>
+									<target name="copy">
+										<copy todir="${basedir}/src/main/webapp/WEB-INF/conf/"
+											overwrite="true">
+											<fileset dir="${basedir}/src/main/resources/conf/dev/"
+												includes="**/*" />
+										</copy>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
