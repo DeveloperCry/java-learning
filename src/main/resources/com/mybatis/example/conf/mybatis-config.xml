@@ -6,7 +6,7 @@
 	<properties resource="com/mybatis/example/conf/database.properties" />
 	<settings>
 		<setting name="cacheEnabled" value="true" />
-		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- <setting name="lazyLoadingEnabled" value="true" /> -->
 		<setting name="multipleResultSetsEnabled" value="true" />
 		<setting name="useColumnLabel" value="true" />
 		<setting name="useGeneratedKeys" value="false" />
