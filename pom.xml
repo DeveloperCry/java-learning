@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.3-SNAPSHOT</version>
+			<version>3.4.2</version>
 		</dependency>
 	</dependencies>
 
@@ -37,7 +37,7 @@
 		</plugins>
 	</build>
 
-	<profiles>
+	<!-- <profiles>
 		<profile>
 			<id>env-dev</id>
 			<activation>
@@ -48,13 +48,13 @@
 				</property>
 			</activation>
 
-			<!-- <properties>
+			<properties>
 				<skip.main.liquibase>false</skip.main.liquibase>
 				<liquibase.master.file>src/main/resources/conf/dev/liquibase.master.properties</liquibase.master.file>
 				<liquibase.oauth.file>src/main/resources/conf/dev/liquibase.oauth.properties</liquibase.oauth.file>
 				<liquibase.file.test>src/main/resources/conf/dev/liquibase.test.dev.properties</liquibase.file.test>
 				<api.test.skip>false</api.test.skip>
-			</properties> -->
+			</properties>
 
 			<build>
 				<plugins>
@@ -82,5 +82,5 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>
+	</profiles> -->
 </project>
