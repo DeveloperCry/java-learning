@@ -25,7 +25,7 @@ public class BlogTest {
 			sqlSession = SqlSessionFactories.getSqlSessionFactory().openSession();
 			BlogMapper blogMapper = sqlSession.getMapper(BlogMapper.class);
 			Blog blog = blogMapper.selectBlog(2);
-			System.out.println(blog.getContent());
+			System.out.println(blog);
 //			fail("Not yet implemented");
 			Assert.assertNotNull(blog);
 			
@@ -41,7 +41,7 @@ public class BlogTest {
 		try {
 			sqlSession = SqlSessionFactories.getSqlSessionFactory().openSession();
 			Blog blog = (Blog) sqlSession.selectOne("com.mybatis.example.mapper.BlogMapper.selectBlogByName", "GOOD JOB2");
-			System.out.println(blog.getId());
+			System.out.println(blog);
 			Assert.assertNotNull(blog);
 		} 
 		finally {

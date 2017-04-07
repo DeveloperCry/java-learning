@@ -9,7 +9,8 @@ public class Blog {
 	private String content;
 	private Date createDate;
 	private int createUser;
-	private Date editDate;
+	/** The name of property should be the same as database column*/
+	private Date edit_date;
 	private int editUser;
 	
 	/**
@@ -93,21 +94,21 @@ public class Blog {
 	}
 	
 	/**
-	 * Gets editDate
-	 * @return the editDate
+	 * Gets edit_date
+	 * @return the edit_date
 	 */
-	public Date getEditDate() {
-		return editDate;
+	public Date getEdit_date() {
+		return edit_date;
 	}
 	
 	/**
-	 * Sets editDate the editDate
-	 * @param editDate the editDate to set
+	 * Sets edit_date the edit_date
+	 * @param edit_date the edit_date to set
 	 */
-	public void setEditDate(Date editDate) {
-		this.editDate = editDate;
+	public void setEdit_date(Date edit_date) {
+		this.edit_date = edit_date;
 	}
-	
+
 	/**
 	 * Gets editUser
 	 * @return the editUser
@@ -123,6 +124,14 @@ public class Blog {
 	public void setEditUser(int editUser) {
 		this.editUser = editUser;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Blog [id=" + id + ", name=" + name + ", content=" + content + ", createDate=" + createDate
+				+ ", createUser=" + createUser + ", editDate=" + edit_date + ", editUser=" + editUser + "]";
+	}
 	
 }

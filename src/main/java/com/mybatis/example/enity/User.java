@@ -126,4 +126,13 @@ public class User {
 		this.editDate = editDate;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", age=" + age + ", address=" + address + ", phoneNumber="
+				+ phoneNumber + ", idCard=" + idCard + ", createDate=" + createDate + ", editDate=" + editDate + "]";
+	}
+	
 }
