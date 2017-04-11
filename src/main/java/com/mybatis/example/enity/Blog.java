@@ -10,7 +10,7 @@ public class Blog {
 	private Date createDate;
 	private int createUser;
 	/** The name of property should be the same as database column*/
-	private Date edit_date;
+	private Date editDate;
 	private int editUser;
 	
 	/**
@@ -97,16 +97,16 @@ public class Blog {
 	 * Gets edit_date
 	 * @return the edit_date
 	 */
-	public Date getEdit_date() {
-		return edit_date;
+	public Date getEditDate() {
+		return editDate;
 	}
 	
 	/**
-	 * Sets edit_date the edit_date
-	 * @param edit_date the edit_date to set
+	 * Sets editDate the editDate
+	 * @param editDate the editDate to set
 	 */
-	public void setEdit_date(Date edit_date) {
-		this.edit_date = edit_date;
+	public void setEditDate(Date editDate) {
+		this.editDate = editDate;
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class Blog {
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", name=" + name + ", content=" + content + ", createDate=" + createDate
-				+ ", createUser=" + createUser + ", editDate=" + edit_date + ", editUser=" + editUser + "]";
+				+ ", createUser=" + createUser + ", editDate=" + editDate + ", editUser=" + editUser + "]";
 	}
 	
 }

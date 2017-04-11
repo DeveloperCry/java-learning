@@ -29,6 +29,7 @@ public class ExampleObjectFactory extends DefaultObjectFactory{
 		return super.create(type);
 	}
 	
+	//Will be called at initializing sesstion factoty.
 	@Override
 	public void setProperties(Properties properties) {
 		

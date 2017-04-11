@@ -16,7 +16,8 @@
 		<setting name="defaultStatementTimeout" value="25" />
 		<setting name="defaultFetchSize" value="100" />
 		<setting name="safeRowBoundsEnabled" value="false" />
-		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<!-- 是否开启自动驼峰命名规则（camel case）映射, 即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射. -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="localCacheScope" value="SESSION" />
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
@@ -26,11 +27,21 @@
 		<typeAlias alias="Blog" type="com.mybatis.example.enity.Blog" />
 	</typeAliases>
 	
-	<!-- <objectFactory type="com.mybatis.example.factory.ExampleObjectFactory">
+	<objectFactory type="com.mybatis.example.factory.ExampleObjectFactory">
 		<property name="someProperty" value="100"/>
-		<property name="someProperty" value="1000"/>
-	</objectFactory> -->
-
+		<property name="someProperty1" value="1000"/>
+	</objectFactory>
+	
+	<plugins>
+		<!-- <plugin interceptor="com.mybatis.example.plugins.MyPlugin">
+			<property name="prop1" value="prop1"/>
+			<property name="prop2" value="prop2"/>
+		</plugin> -->
+		<plugin interceptor="com.mybatis.example.plugins.PageInterceptor">
+			<property name="databaseType" value="mysql"/>
+		</plugin>
+	</plugins>
+	
 	<environments default="development">
 		<environment id="development">
 			<!-- JDBC – 这个配置就是直接使用了 JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域。 MANAGED – 

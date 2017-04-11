@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<classPathEntry
-		location="/Users/xiong.liu/.m2/repository/mysql/mysql-connector-java/5.1.37/mysql-connector-java-5.1.37.jar" />
+		location="C:\Users\Xiong.Liu\.m2\repository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar" />
 		
 	<context id="MysqlTables" targetRuntime="MyBatis3">
 		<commentGenerator>
@@ -32,7 +32,10 @@
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		-->
-		<table schema="dispatch" tableName="AUTHORITIES" domainObjectName="Authority">
+		<table schema="blog" tableName="USER">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table schema="blog" tableName="BLOG">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 	</context>
