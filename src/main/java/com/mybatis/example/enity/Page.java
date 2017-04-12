@@ -65,6 +65,9 @@ public class Page<T> {
 	 */
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
+		
+		int totalPages = totalRecord % this.pageSize == 0 ? totalRecord / this.pageSize : (totalRecord / this.pageSize) + 1;
+		this.setTotalPage(totalPages);
 	}
 	
 	/**

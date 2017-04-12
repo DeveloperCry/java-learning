@@ -6,4 +6,8 @@
 	<select id="selectBlogByName" resultType="Blog">
 		SELECT * FROM BLOG WHERE NAME = #{name}
 	</select>
+	
+	<!-- <select id="findBlog" resultType="Blog" parameterType="page">
+       SELECT * FROM BLOG
+    </select> -->
 </mapper>

@@ -5,11 +5,9 @@ package com.mybatis.example;
 
 import static org.junit.Assert.*;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.After;
@@ -47,18 +45,19 @@ public class PageTest {
 			sqlSession = sessionFactory.openSession();
 			BlogMapper mapper = (BlogMapper)sqlSession.getMapper(BlogMapper.class);
 			Page<Blog> page = new Page<Blog>();
-			page.setPageNo(2);
+			page.setPageNo(3);
 			
 			List<Blog> blogs = mapper.findBlog(page);
 			assertTrue(CollectionUtils.isNotEmpty(blogs));
-			System.out.println(blogs.size());
 			page.setResults(blogs);
 			System.out.println(page);
-			for (Blog blog : blogs) {
+			for (Blog blog : page.getResults()) {
 				System.out.println(blog);
 			}
 			
 		} catch (Exception e) {
+			e.printStackTrace();
+			fail("This testing is failed.");
 		} finally {
 			sqlSession = null;
 		}

@@ -33,7 +33,7 @@ import com.mybatis.example.utils.ReflectUtils;
 @Intercepts({@Signature(
 	method = "prepare",
 	type = StatementHandler.class,
-	args = {Connection.class}
+	args = {Connection.class, Integer.class}
 			
 )})
 public class PageInterceptor implements Interceptor{
@@ -123,7 +123,7 @@ public class PageInterceptor implements Interceptor{
 			if (rs.next()) {
 				int totalRecord = rs.getInt(1);
 				
-				page.setTotalPage(totalRecord);
+				page.setTotalRecord(totalRecord);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,7 +142,7 @@ public class PageInterceptor implements Interceptor{
 	}
 	
 	private String getCountRecordSql(String sql) {
-		int index = sql.indexOf("from");
+		int index = sql.toUpperCase().indexOf("FROM");
 		return "select count(*) " + sql.substring(index);
 	}
 

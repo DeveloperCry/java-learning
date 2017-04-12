@@ -25,6 +25,7 @@
 
 	<typeAliases>
 		<typeAlias alias="Blog" type="com.mybatis.example.enity.Blog" />
+		<typeAlias alias="Page" type="com.mybatis.example.enity.Page" />
 	</typeAliases>
 	
 	<objectFactory type="com.mybatis.example.factory.ExampleObjectFactory">
