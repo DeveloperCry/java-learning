@@ -26,6 +26,7 @@
 	<typeAliases>
 		<typeAlias alias="Blog" type="com.mybatis.example.enity.Blog" />
 		<typeAlias alias="Page" type="com.mybatis.example.enity.Page" />
+		<typeAlias alias="User" type="com.mybatis.example.enity.User" />
 	</typeAliases>
 	
 	<objectFactory type="com.mybatis.example.factory.ExampleObjectFactory">
@@ -64,6 +65,14 @@
 		</environment>
 	</environments>
 	
+	<!-- Put this in the back of environments -->
+	<databaseIdProvider type="DB_VENDOR">
+	  	<property name="SQL Server" value="sqlserver"/>
+	  	<property name="DB2" value="db2"/>        
+	  	<property name="Oracle" value="oracle" />
+	  	<property name="MySQL" value="mysql" />
+	</databaseIdProvider>
+	
 	<!-- 指定数据表映射文件位置，有以下四种方式： 
 		1.使用相关资源 <mappers> <mapper resource="XXX/YYY/ZZZ/WWW.xml"/></mappers>  
 		2.使用全路径 <mappers> <mapper url="file:///XXX.xml" /> </mappers> 
@@ -73,5 +82,6 @@
 		<mapper class="com.mybatis.example.mapper.BlogMapper" />
 		<mapper class="com.mybatis.example.mapper.UserMapper" />
 		<mapper resource="com/mybatis/example/mappers/BlogMapper.xml" />
+		<mapper resource="com/mybatis/example/mappers/UserMapper.xml" />
 	</mappers>
 </configuration>

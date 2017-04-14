@@ -10,4 +10,5 @@
 	<!-- <select id="findBlog" resultType="Blog" parameterType="page">
        SELECT * FROM BLOG
     </select> -->
+    
 </mapper>

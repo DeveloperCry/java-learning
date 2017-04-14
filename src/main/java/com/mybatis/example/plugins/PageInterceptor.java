@@ -27,6 +27,9 @@ import com.mybatis.example.enity.Page;
 import com.mybatis.example.utils.ReflectUtils;
 
 /**
+ * 
+ * For prepare, the args must include Integer.class
+ * 
  * @author Xiong.Liu
  *
  */

@@ -14,17 +14,17 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="com.eagle.bigdata.collector.model"
+		<javaModelGenerator targetPackage="com.mybatis.example.enity"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.eagle.bigdata.collector.dao"
+		<sqlMapGenerator targetPackage="com.mybatis.example.mappers"
 			targetProject="src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.eagle.bigdata.collector.dao" targetProject="src/main/java">
+			targetPackage="com.mybatis.example.dao" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 
@@ -32,10 +32,25 @@
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		-->
-		<table schema="blog" tableName="USER">
+		<!-- <table schema="blog" tableName="USER">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		<table schema="blog" tableName="BLOG">
+			<property name="useActualColumnNames" value="false" />
+		</table> -->
+		<table schema="blog" tableName="AUTHOR">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table schema="blog" tableName="POST">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table schema="blog" tableName="COMMENTS">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table schema="blog" tableName="TAG">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table schema="blog" tableName="POST_TAG">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 	</context>
