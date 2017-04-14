@@ -2,6 +2,7 @@ package com.mybatis.example.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.mybatis.example.enity.Blog;
@@ -16,5 +17,7 @@ public interface BlogMapper {
 	
 	@Select("SELECT * FROM BLOG")
 	public List<Blog> findBlog(Page<Blog> page);
+	
+	public List<Blog> findActiveBlogWithNameLike(@Param("name") String name);
 
 }

@@ -12,6 +12,9 @@ public class Blog {
 	/** The name of property should be the same as database column*/
 	private Date editDate;
 	private int editUser;
+	private int authorId;
+	private String title;
+	private String status;
 	
 	/**
 	 * Gets id
@@ -124,6 +127,54 @@ public class Blog {
 	public void setEditUser(int editUser) {
 		this.editUser = editUser;
 	}
+	
+	/**
+	 * Gets authorId
+	 * @return the authorId
+	 */
+	public int getAuthorId() {
+		return authorId;
+	}
+	
+	/**
+	 * Sets authorId the authorId
+	 * @param authorId the authorId to set
+	 */
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
+	
+	/**
+	 * Gets title
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * Sets title the title
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * Gets status
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * Sets status the status
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -131,7 +182,8 @@ public class Blog {
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", name=" + name + ", content=" + content + ", createDate=" + createDate
-				+ ", createUser=" + createUser + ", editDate=" + editDate + ", editUser=" + editUser + "]";
+				+ ", createUser=" + createUser + ", editDate=" + editDate + ", editUser=" + editUser + ", authorId="
+				+ authorId + ", title=" + title + ", status=" + status + "]";
 	}
-	
+
 }

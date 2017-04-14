@@ -10,5 +10,13 @@
 	<!-- <select id="findBlog" resultType="Blog" parameterType="page">
        SELECT * FROM BLOG
     </select> -->
-    
+    <select id="findActiveBlogWithNameLike" resultType="Blog">
+    	<bind name="namePattern" value="'%' + name + '%'"/>
+    	SELECT * FROM BLOG
+    	WHERE STATUS = 'ACTIVE' 
+    	<if test="name != null">
+    	<!-- concat(concat('%',#{username}),'%') -->
+    		AND NAME LIKE #{namePattern}
+    	</if>
+    </select>
 </mapper>
