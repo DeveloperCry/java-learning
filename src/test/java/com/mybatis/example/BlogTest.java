@@ -69,6 +69,7 @@ public class BlogTest {
 	
 	@Test
 	public void findActiveBlogWithNameLikeTest() {
+		System.out.println("test findActiveBlogWithNameLike start.........");
 		SqlSession sqlSession = null;
 		
 		try {
@@ -88,6 +89,89 @@ public class BlogTest {
 		} finally {
 			sqlSession.close();
 		}
+		System.out.println("test findActiveBlogWithNameLike end.........");
 	}
-
+	
+	@Test
+	public void findActiveBlogLikeTest() {
+		
+		System.out.println("test findActiveBlogLike start.........");
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			List<Blog> blogs = mapper.findActiveBlogLike("good", null);
+			Assert.assertTrue(CollectionUtils.isNotEmpty(blogs));
+			System.out.println(blogs.size());
+			for (Blog blog : blogs) {
+				System.out.println(blog);
+			}
+			System.out.println(blogs.size());
+			System.out.println("=====================");
+			
+			Blog pblog = new Blog();
+			pblog.setTitle("a");
+			List<Blog> blogs2 = mapper.findActiveBlogLike(null, pblog);
+			Assert.assertTrue(CollectionUtils.isNotEmpty(blogs2));
+			System.out.println(blogs2.size());
+			for (Blog blog : blogs2) {
+				System.out.println(blog);
+			}
+			System.out.println(blogs2.size());
+			
+			System.out.println("=====================");
+			
+			List<Blog> blogs3 = mapper.findActiveBlogLike(null, null);
+			Assert.assertTrue(CollectionUtils.isNotEmpty(blogs3));
+			System.out.println(blogs3.size());
+			for (Blog blog : blogs3) {
+				System.out.println(blog);
+			}
+			System.out.println(blogs3.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("This test failed.");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("test findActiveBlogLike end.........");
+	}
+	
+	@Test
+	public void findBlogWithStatusTest() {
+		
+		System.out.println("test findBlogWithStatus start.........");
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			List<Blog> blogs = mapper.findBlogWithStatus("ACTIVE", null);
+			Assert.assertTrue(CollectionUtils.isNotEmpty(blogs));
+			System.out.println(blogs.size());
+			for (Blog blog : blogs) {
+				System.out.println(blog);
+			}
+			System.out.println(blogs.size());
+			System.out.println("=====================");
+			
+			List<Blog> blogs2 = mapper.findBlogWithStatus(null, "a");
+			Assert.assertTrue(CollectionUtils.isNotEmpty(blogs2));
+			System.out.println(blogs2.size());
+			for (Blog blog : blogs2) {
+				System.out.println(blog);
+			}
+			System.out.println(blogs2.size());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("This test failed.");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("test findBlogWithStatus end.........");
+	}
 }

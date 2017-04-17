@@ -11,12 +11,64 @@
        SELECT * FROM BLOG
     </select> -->
     <select id="findActiveBlogWithNameLike" resultType="Blog">
-    	<bind name="namePattern" value="'%' + name + '%'"/>
     	SELECT * FROM BLOG
     	WHERE STATUS = 'ACTIVE' 
     	<if test="name != null">
+    		<bind name="namePattern" value="'%' + name + '%'"/>
     	<!-- concat(concat('%',#{username}),'%') -->
     		AND NAME LIKE #{namePattern}
     	</if>
+    </select>
+    
+    <select id="findActiveBlogLike" resultType="Blog">
+    	SELECT * FROM BLOG
+    	WHERE STATUS = 'ACTIVE' 
+    	<choose>
+    		<when test="name != null">
+    			<bind name="namePattern" value="'%' + name + '%'"/>
+    			AND NAME LIKE #{namePattern}
+    		</when>
+    		<when test="blog != null and blog.title != null"><!-- using 'and' instead of '&&' -->
+    			AND TITLE LIKE concat(concat('%',#{blog.title}),'%')
+    		</when>
+    		<otherwise>
+    			AND AUTHOR_ID = 2
+    		</otherwise>
+    	</choose>
+    </select>
+    
+    <!-- The where element knows to only insert "WHERE" if there is any content returned by the containing tags. 
+    Furthermore, if that content begins with "AND" or "OR", it knows to strip it off.
+
+	If the where element does not behave exactly as you like, you can customize it by defining your own trim element. 
+	For example, the trim equivalent to the where element is:
+
+	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	  ...
+	</trim>
+
+	The prefixOverrides attribute takes a pipe delimited list of text to override, where whitespace is relevant. 
+	The result is the removal of anything specified in the prefixOverrides attribute, and the insertion of anything in the prefix attribute. -->
+    
+    <!-- There is a similar solution for dynamic update statements called set. 
+    The set element can be used to dynamically include columns to update, and leave out others. -->
+    <select id="findBlogWithStatus" resultType="Blog">
+    	SELECT * FROM BLOG 
+    	<!-- Blow comments is error. Because the status and title may be null -->
+    	<!-- WHERE 
+    	<if test="status != null">
+    			STATUS = #{status}
+    		</if>
+    		<if test="title != null">
+    			AND TITLE LIKE concat(concat('%',#{title}),'%')
+    		</if> -->
+    	<where>
+    		<if test="status != null">
+    			STATUS = #{status}
+    		</if>
+    		<if test="title != null">
+    			AND TITLE LIKE concat(concat('%',#{title}),'%')
+    		</if>
+    	</where>
     </select>
 </mapper>

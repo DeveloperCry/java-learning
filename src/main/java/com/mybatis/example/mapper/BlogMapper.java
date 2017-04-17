@@ -19,5 +19,9 @@ public interface BlogMapper {
 	public List<Blog> findBlog(Page<Blog> page);
 	
 	public List<Blog> findActiveBlogWithNameLike(@Param("name") String name);
+	
+	public List<Blog> findActiveBlogLike(@Param("name") String name, @Param("blog") Blog blog);
+	
+	public List<Blog> findBlogWithStatus(@Param("status") String status, @Param("title") String title);
 
 }
