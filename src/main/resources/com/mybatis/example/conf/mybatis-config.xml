@@ -21,13 +21,13 @@
 		<setting name="localCacheScope" value="SESSION" />
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
-		<setting name="logImpl" value="LOG4J"/>
+		<!-- <setting name="logImpl" value="LOG4J"/> -->
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="Blog" type="com.mybatis.example.enity.Blog" />
-		<typeAlias alias="Page" type="com.mybatis.example.enity.Page" />
-		<typeAlias alias="User" type="com.mybatis.example.enity.User" />
+		<typeAlias alias="blog" type="com.mybatis.example.enity.Blog" />
+		<typeAlias alias="page" type="com.mybatis.example.enity.Page" />
+		<typeAlias alias="user" type="com.mybatis.example.enity.User" />
 	</typeAliases>
 	
 	<objectFactory type="com.mybatis.example.factory.ExampleObjectFactory">
@@ -82,7 +82,7 @@
 	<mappers>
 		<mapper class="com.mybatis.example.mapper.BlogMapper" />
 		<mapper class="com.mybatis.example.mapper.UserMapper" />
-		<mapper resource="com/mybatis/example/mappers/BlogMapper.xml" />
 		<mapper resource="com/mybatis/example/mappers/UserMapper.xml" />
+		<mapper resource="com/mybatis/example/mappers/BlogMapper.xml" />
 	</mappers>
 </configuration>

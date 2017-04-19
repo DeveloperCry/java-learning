@@ -174,4 +174,54 @@ public class BlogTest {
 		}
 		System.out.println("test findBlogWithStatus end.........");
 	}
+	
+	@Test
+	public void selectBlogWithUserTest() {
+		
+		System.out.println("\n test selectBlogWithUser start.........\n");
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			Blog blog = mapper.selectBlogWithUser(2);
+			Assert.assertFalse(blog == null);
+			Assert.assertFalse(blog.getUser() == null);
+			System.out.println(blog);
+			System.out.println(blog.getUser());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("This test failed.");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("\n test selectBlogWithUser end.........\n");
+	}
+	
+	@Test
+	public void selectBlogWithUser2Test() {
+		
+		System.out.println("\n test selectBlogWithUser2 start.........\n");
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			Blog blog = mapper.selectBlogWithUser2(3);
+			Assert.assertFalse(blog == null);
+			Assert.assertFalse(blog.getUser() == null);
+			System.out.println(blog);
+			System.out.println(blog.getUser());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("This test failed.");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("\n test selectBlogWithUser2 end.........\n");
+	}
 }

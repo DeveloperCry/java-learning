@@ -1,6 +1,7 @@
 package com.mybatis.example.enity;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 	
@@ -12,6 +13,38 @@ public class User {
 	private String idCard;
 	private Date createDate;
 	private Date editDate;
+	
+	private List<Blog> blogs;
+	
+	/**
+	 * 
+	 */
+	public User() {
+		super();
+	}
+
+	/**
+	 * @param id
+	 * @param name
+	 * @param age
+	 * @param address
+	 * @param phoneNumber
+	 * @param idCard
+	 * @param createDate
+	 * @param editDate
+	 */
+	public User(int id, String name, int age, String address, String phoneNumber, String idCard, Date createDate,
+			Date editDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.idCard = idCard;
+		this.createDate = createDate;
+		this.editDate = editDate;
+	}
 	
 	/**
 	 * Gets id
@@ -126,6 +159,22 @@ public class User {
 		this.editDate = editDate;
 	}
 	
+	/**
+	 * Gets blogs
+	 * @return the blogs
+	 */
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+	
+	/**
+	 * Sets blogs the blogs
+	 * @param blogs the blogs to set
+	 */
+	public void setBlogs(List<Blog> blogs) {
+		this.blogs = blogs;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

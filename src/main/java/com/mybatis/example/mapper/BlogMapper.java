@@ -23,5 +23,9 @@ public interface BlogMapper {
 	public List<Blog> findActiveBlogLike(@Param("name") String name, @Param("blog") Blog blog);
 	
 	public List<Blog> findBlogWithStatus(@Param("status") String status, @Param("title") String title);
+	
+	public Blog selectBlogWithUser(int id);
+	
+	public Blog selectBlogWithUser2(int id);
 
 }

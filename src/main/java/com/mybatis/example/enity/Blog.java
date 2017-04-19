@@ -16,6 +16,8 @@ public class Blog {
 	private String title;
 	private String status;
 	
+	private User user;
+	
 	/**
 	 * Gets id
 	 * @return the id
@@ -174,6 +176,22 @@ public class Blog {
 	 */
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	/**
+	 * Gets user
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+	
+	/**
+	 * Sets user the user
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/* (non-Javadoc)

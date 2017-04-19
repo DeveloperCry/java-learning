@@ -16,6 +16,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mybatis.example.enity.Blog;
 import com.mybatis.example.enity.User;
 import com.mybatis.example.factory.SqlSessionFactories;
 import com.mybatis.example.mapper.UserMapper;
@@ -154,7 +155,7 @@ public class UserTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void updateUserByNameTest() {
 		SqlSession sqlSession = null;
 		try {
@@ -232,5 +233,53 @@ public class UserTest {
 			sqlSession.close();
 		}
 	}
-
+	
+	@Test
+	public void selectUserConstructorTest() {
+		System.out.println("\ntest selectUserConstructor start ...................\n");
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			UserMapper userMapper = (UserMapper)sqlSession.getMapper(UserMapper.class);
+			List<User> users = userMapper.selectUserConstructor();
+			assertFalse(users == null);
+			assertFalse(CollectionUtils.isEmpty(users));
+			for (User user : users) {
+				System.out.println(user);
+				System.out.println(user.getBlogs());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Test failed");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("\ntest selectUserConstructor end ...................\n");
+	}
+	
+	@Test
+	public void selectUserWithBlogTest() {
+		System.out.println("\ntest selectUserWithBlog start ...................\n");
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			
+			UserMapper userMapper = (UserMapper)sqlSession.getMapper(UserMapper.class);
+			User user = userMapper.selectUserWithBlog(2);
+			assertFalse(user == null);
+			assertFalse(CollectionUtils.isEmpty(user.getBlogs()));
+			System.out.println(user);
+			
+			for (Blog blog : user.getBlogs()) {
+				System.out.println(blog);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Test failed");
+		} finally {
+			sqlSession.close();
+		}
+		System.out.println("\ntest selectUserWithBlog end ...................\n");
+	}
 }

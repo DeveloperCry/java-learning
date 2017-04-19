@@ -27,5 +27,9 @@ public interface UserMapper {
 	public Integer deleteUserByNameAndAddress(@Param("name") String name, @Param("address")  String address);
 	
 	public User selectUserByName(String name);
+	
+	public List<User> selectUserConstructor();
+	
+	public User selectUserWithBlog(int id);
 
 }
