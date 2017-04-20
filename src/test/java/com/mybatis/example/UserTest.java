@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.After;
@@ -26,6 +28,7 @@ import com.mybatis.example.mapper.UserMapper;
  *
  */
 public class UserTest {
+	private static final Log LOGGER = LogFactory.getLog(UserTest.class);
 	
 	private SqlSessionFactory sqlSessionFactory = null;
 	
@@ -43,6 +46,7 @@ public class UserTest {
 
 	@Test
 	public void getUserTest() {
+		UserTest.LOGGER.info("\nTest getUser start.........................\n");
 		SqlSession sqlSession = null;
 		try {
 			sqlSession = sqlSessionFactory.openSession();
@@ -54,6 +58,7 @@ public class UserTest {
 		} finally {
 			sqlSession.close();
 		}
+		UserTest.LOGGER.info("\nTest getUser end.........................\n");
 	}
 	
 //	@Test
