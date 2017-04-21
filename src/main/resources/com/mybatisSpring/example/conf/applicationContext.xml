@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+     
+    <context:property-placeholder location="classpath*:database.properties"/>
+     
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> 
+        <!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+        <property name="driverClass" value="${jdbc.driver}" />
+        
+        <!-- 基本属性 url、user、password -->
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialPoolSize" value="${jdbc.pool.minIdle}" />
+        <property name="minPoolSize" value="${jdbc.pool.minIdle}" /> 
+        <property name="maxPoolSize" value="${jdbc.pool.maxActive}" />
+        
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxIdleTime" value="60000" />
+          
+       	<property name="acquireIncrement" value="3" />  
+       	<property name="maxStatements" value="1000" />  
+       	<property name="idleConnectionTestPeriod" value="60" />  
+       	<property name="acquireRetryAttempts" value="30" />  
+       	<property name="breakAfterAcquireFailure" value="true" />  
+      	<property name="testConnectionOnCheckout" value="false" />   
+      </bean>
+      
+      <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      	<property name="mapperInterface" value="com.mybatisSpring.example.mapper.UserMapper" />
+      	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+      </bean>
+</beans>

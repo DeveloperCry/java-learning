@@ -14,17 +14,17 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="com.mybatis.example.enity"
+		<javaModelGenerator targetPackage="com.mybatisSpring.example.enity"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.mybatis.example.mappers"
+		<sqlMapGenerator targetPackage="com.mybatisSpring.example.mappers"
 			targetProject="src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.mybatis.example.mapper" targetProject="src/main/java">
+			targetPackage="com.mybatisSpring.example.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- 
@@ -32,12 +32,12 @@
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		-->
-		<!-- <table schema="blog" tableName="USER">
+		<table schema="blog" tableName="USER">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		<table schema="blog" tableName="BLOG">
 			<property name="useActualColumnNames" value="false" />
-		</table> -->
+		</table>
 		<table schema="blog" tableName="AUTHOR">
 			<property name="useActualColumnNames" value="false" />
 		</table>
