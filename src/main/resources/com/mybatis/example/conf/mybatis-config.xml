@@ -58,10 +58,10 @@
 				3.最后读取作为方法参数传递的属性，并覆盖已读取的同名属性。 因此，通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，最低优先级的是 
 				properties 属性中指定的属性。 -->
 			<dataSource type="POOLED">
-				<property name="driver" value="${driver}" />
-				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
 			</dataSource>
 		</environment>
 	</environments>

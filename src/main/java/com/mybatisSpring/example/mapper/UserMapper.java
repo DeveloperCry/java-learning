@@ -4,6 +4,7 @@ import com.mybatisSpring.example.enity.User;
 import com.mybatisSpring.example.enity.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper {
@@ -29,6 +30,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
+    @ResultMap(value = "com.mybatisSpring.example.mapper.UserMapper.BaseResultMap")
     @Select("SELECT * FROM USER WHERE ID = #{id}")
-    public User getUser(int id);
+    public User getUser(Integer id);
 }

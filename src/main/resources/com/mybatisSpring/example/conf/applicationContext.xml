@@ -11,10 +11,14 @@
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
      http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
      
-    <context:property-placeholder location="classpath*:database.properties"/>
+     <!-- I think the classpath should be a little more detail. By this way spring can find it fast -->
+    <context:property-placeholder location="classpath*:conf/dev/database.properties"/>
      
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	  <property name="dataSource" ref="dataSource" />
+	  <!-- <property name="configLocation" value="classpath*:*/mybatis-config.xml" /> -->
+	  <!-- <property name="mapperLocations" value="classpath:com/mybatisSpring/example/mappers/**/*.xml" /> -->
+	  <property name="configLocation" value="classpath:com/mybatisSpring/example/conf/mybatis-config.xml" />
 	</bean>
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> 
