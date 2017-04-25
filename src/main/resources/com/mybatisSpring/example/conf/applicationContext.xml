@@ -19,6 +19,17 @@
 	  <!-- <property name="configLocation" value="classpath*:*/mybatis-config.xml" /> -->
 	  <!-- <property name="mapperLocations" value="classpath:com/mybatisSpring/example/mappers/**/*.xml" /> -->
 	  <property name="configLocation" value="classpath:com/mybatisSpring/example/conf/mybatis-config.xml" />
+	  <!-- http://www.2cto.com/kf/201611/566987.html -->
+	  <!-- <property name="configuration">
+      	<bean class="org.apache.ibatis.session.Configuration">
+      	//是否开启自动将数据库表字段映射为驼峰命名规则
+      		<property name="mapUnderscoreToCamelCase" value="true"/>
+    	</bean>
+  	  </property> -->
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> 

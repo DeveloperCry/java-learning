@@ -79,6 +79,21 @@
 	    	<scope>compile</scope>
 	    </dependency>
 	    <!-- Spring end -->
+	    
+	    <!-- Spring test start -->
+	    <dependency>
+	    	<groupId>org.springframework</groupId>
+	    	<artifactId>spring-test</artifactId>
+	    	<version>${spring.version}</version>
+	    	<scope>compile</scope>
+	    </dependency>
+	    
+	    <dependency><groupId>org.springframework</groupId>
+	    	<artifactId>spring-tx</artifactId>
+	    	<version>4.3.8.RELEASE</version>
+	    	<scope>compile</scope>
+    	</dependency>
+	    <!-- Spring test end -->
 		
 		<!-- commons start -->
 		<dependency>

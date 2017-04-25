@@ -30,7 +30,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
-    @ResultMap(value = "com.mybatisSpring.example.mapper.UserMapper.BaseResultMap")
+    @ResultMap(value = "com.mybatisSpring.example.mapper.UserMapper.BaseResultMap")//remove when using org.apache.ibatis.session.Configuration-mapUnderscoreToCamelCase
     @Select("SELECT * FROM USER WHERE ID = #{id}")
     public User getUser(Integer id);
 }
