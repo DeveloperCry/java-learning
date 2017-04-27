@@ -57,8 +57,18 @@
       	<property name="testConnectionOnCheckout" value="false" />   
       </bean>
       
-      <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <!-- <context:component-scan/> won't be able to scan and register mappers. Mappers are interfaces and, 
+      in order to register them to Spring, the scanner must know how to create a MapperFactoryBean for each interface it finds.  -->
+      
+      <!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
       	<property name="mapperInterface" value="com.mybatisSpring.example.mapper.UserMapper" />
       	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-      </bean>
+      </bean> -->
+      <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      	<property name="basePackage" value="com.mybatisSpring.example.mapper" />
+      	If you need to specify an specific sqlSessionFactory or sqlSessionTemplate note that bean names are required, not bean references, 
+      	thus the value attribute is used instead of the usual ref
+      	<property name="sqlSessionFactoryBeanName" ref="sqlSessionFactory" />
+	  </bean> -->
+	  <mybatis:scan base-package="com.mybatisSpring.example.mapper" />
 </beans>
