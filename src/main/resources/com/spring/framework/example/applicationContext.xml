@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <!-- Composing XML-based configuration metadata start -->
+        <!-- <import resource="services.xml"/>
+        <import resource="daos.xml"/> -->
+        <!-- Composing XML-based configuration metadata end -->
+        
+        <bean id="clientService" class="com.spring.framework.example.service.ClientService" factory-method="createInstance"/>
+</beans>
