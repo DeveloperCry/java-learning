@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  -->
+<!-- -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-        
-        <!-- Composing XML-based configuration metadata start -->
-        <!-- <import resource="services.xml"/>
-        <import resource="daos.xml"/> -->
-        <!-- Composing XML-based configuration metadata end -->
-        
-        <bean id="clientService" class="com.spring.framework.example.service.ClientService" factory-method="createInstance"/>
+
+	<!-- Composing XML-based configuration metadata start -->
+	<!-- <import resource="services.xml"/> <import resource="daos.xml"/> -->
+	<!-- Composing XML-based configuration metadata end -->
+
+    <!-- By this way, createClientServiceInstance must be a static method -->
+	<bean id="clientService" class="com.spring.framework.example.service.ClientService"
+		factory-method="createInstance" />
+
+	<bean id="serviceLocator"
+		class="com.spring.framework.example.service.DefaultServiceLocator" />
+    <!-- By this way, createClientServiceInstance must be a non-static method -->
+	<bean id="clientServiceLocator" factory-bean="serviceLocator"
+		factory-method="createClientServiceInstance" />
+	
+	<bean id="bar" class="com.spring.framework.example.injection.Bar" />
+	<bean id="baz" class="com.spring.framework.example.injection.Baz" />
+	
+	<bean id="foo" class="com.spring.framework.example.injection.Foo">
+	   <constructor-arg ref="baz"/>
+	   <constructor-arg ref="bar"/>
+	</bean>
 </beans>
