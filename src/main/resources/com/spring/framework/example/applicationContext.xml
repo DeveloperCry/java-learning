@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  -->
+<!-- -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
-        
-        <!-- Composing XML-based configuration metadata start -->
-        <!-- <import resource="services.xml"/>
-        <import resource="daos.xml"/> -->
-        <!-- Composing XML-based configuration metadata end -->
-        
-        <bean id="clientService" class="com.spring.framework.example.service.ClientService" factory-method="createInstance"/>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/lang
+        http://www.springframework.org/schema/lang/spring-lang.xsd">
+
+	<!-- Composing XML-based configuration metadata start -->
+	<!-- <import resource="services.xml"/> <import resource="daos.xml"/> -->
+	<!-- Composing XML-based configuration metadata end -->
+
+    <!-- By this way, createClientServiceInstance must be a static method -->
+	<bean id="clientService" class="com.spring.framework.example.service.ClientService"
+		factory-method="createInstance" />
+
+	<bean id="serviceLocator"
+		class="com.spring.framework.example.service.DefaultServiceLocator" />
+    <!-- By this way, createClientServiceInstance must be a non-static method -->
+	<bean id="clientServiceLocator" factory-bean="serviceLocator"
+		factory-method="createClientServiceInstance" />
+	
+	<bean id="bar" class="com.spring.framework.example.injection.Bar" />
+	<bean id="baz" class="com.spring.framework.example.injection.Baz" />
+	
+	<bean id="foo" class="com.spring.framework.example.injection.Foo">
+	   <constructor-arg ref="bar"/>
+	   <constructor-arg ref="baz"/>
+	</bean>
+	
+	<bean id="parent" class="com.spring.framework.example.injection.ComplexObject">
+	   <property name="adminEmails">
+	       <props>
+	           <prop key="administrator">administrator@example.com</prop>
+	           <prop key="support">support@example.com</prop>
+	       </props>
+	   </property>
+	</bean>
+	
+	<bean id="child" parent="parent">
+	   <property name="adminEmails">
+	       <props merge="true">
+	           <prop key="administrator2">administrator11@example.com</prop>
+               <prop key="support">support@example.com</prop>
+	       </props>
+	   </property>
+	</bean>
+	
+	<!-- Customizing beans using a BeanPostProcessor start -->
+	<!-- <lang:groovy id="messenger" script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
+	   <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
+	</lang:groovy> -->
+	
+	<bean class="com.spring.framework.example.bean.InstantiationTracingBeanPostProcessor"/>
+	<!-- Customizing beans using a BeanPostProcessor start -->
 </beans>

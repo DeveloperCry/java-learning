@@ -70,8 +70,17 @@ public class SpringFrameworkTest {
 
 		ClientService service2 = context.getBean("clientService", ClientService.class);
 		
-		Assert.assertTrue(service.createInstance().equals(service2.createInstance()));
-		Assert.assertTrue(service.createInstance() == service2.createInstance());
+		Assert.assertTrue(service.equals(service2));
+		Assert.assertTrue(service == service2);
+	}
+	
+	@Test
+	public void clientServiceLocatorTest() {
+		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		// createInstance called one time since the get bean twice.
+		ClientService service = context.getBean("clientServiceLocator", ClientService.class);
+
+		ClientService service2 = context.getBean("clientServiceLocator", ClientService.class);
 		
 		Assert.assertTrue(service.equals(service2));
 		Assert.assertTrue(service == service2);
