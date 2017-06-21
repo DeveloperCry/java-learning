@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.spring.framework.example.service;
+package com.spring.framework.example.service.impl;
 
 /**
  * @author Xiong.Liu

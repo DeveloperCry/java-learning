@@ -7,14 +7,16 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+import com.spring.framework.example.lister.SimpleMovieLister;
 import com.spring.framework.example.service.BlogService;
-import com.spring.framework.example.service.BlogServiceImpl;
-import com.spring.framework.example.service.ClientService;
+import com.spring.framework.example.service.impl.BlogServiceImpl;
+import com.spring.framework.example.service.impl.ClientService;
 
 /**
  * @author Xiong.Liu
@@ -23,6 +25,10 @@ import com.spring.framework.example.service.ClientService;
 public class SpringFrameworkTest {
 
 	ApplicationContext context = null;
+	
+//	@Autowired
+//	private SimpleMovieLister lister;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -84,6 +90,13 @@ public class SpringFrameworkTest {
 		
 		Assert.assertTrue(service.equals(service2));
 		Assert.assertTrue(service == service2);
+	}
+	
+	@Test
+	public void simpleMovieListerTest() {
+		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		SimpleMovieLister lister = context.getBean("simpleMovieLister", SimpleMovieLister.class);
+		lister.printMovie();
 	}
 	
 

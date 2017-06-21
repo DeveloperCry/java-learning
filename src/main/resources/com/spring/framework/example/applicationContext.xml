@@ -3,21 +3,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/lang
-        http://www.springframework.org/schema/lang/spring-lang.xsd">
+        http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.spring.framework.example"/>
 
 	<!-- Composing XML-based configuration metadata start -->
 	<!-- <import resource="services.xml"/> <import resource="daos.xml"/> -->
 	<!-- Composing XML-based configuration metadata end -->
 
     <!-- By this way, createClientServiceInstance must be a static method -->
-	<bean id="clientService" class="com.spring.framework.example.service.ClientService"
+	<bean id="clientService" class="com.spring.framework.example.service.impl.ClientService"
 		factory-method="createInstance" />
 
 	<bean id="serviceLocator"
-		class="com.spring.framework.example.service.DefaultServiceLocator" />
+		class="com.spring.framework.example.service.impl.DefaultServiceLocator" />
     <!-- By this way, createClientServiceInstance must be a non-static method -->
 	<bean id="clientServiceLocator" factory-bean="serviceLocator"
 		factory-method="createClientServiceInstance" />
@@ -55,4 +60,5 @@
 	
 	<bean class="com.spring.framework.example.bean.InstantiationTracingBeanPostProcessor"/>
 	<!-- Customizing beans using a BeanPostProcessor start -->
+	
 </beans>

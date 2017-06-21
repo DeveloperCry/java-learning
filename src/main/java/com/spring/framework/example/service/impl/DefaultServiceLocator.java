@@ -1,4 +1,4 @@
-package com.spring.framework.example.service;
+package com.spring.framework.example.service.impl;
 
 public class DefaultServiceLocator {
 	private static ClientService clientService = new ClientService();

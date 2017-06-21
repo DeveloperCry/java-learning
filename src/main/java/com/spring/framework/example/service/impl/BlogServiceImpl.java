@@ -1,10 +1,11 @@
 /**
  * 
  */
-package com.spring.framework.example.service;
+package com.spring.framework.example.service.impl;
 
 import com.spring.framework.example.dao.BlogDao;
 import com.spring.framework.example.dao.CommentsDao;
+import com.spring.framework.example.service.BlogService;
 
 /**
  * @author Xiong.Liu
