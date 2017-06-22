@@ -58,7 +58,7 @@
 	   <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
 	</lang:groovy> -->
 	
-	<bean class="com.spring.framework.example.bean.InstantiationTracingBeanPostProcessor"/>
+	<!-- <bean class="com.spring.framework.example.bean.InstantiationTracingBeanPostProcessor"/> -->
 	<!-- Customizing beans using a BeanPostProcessor start -->
 	
 </beans>
