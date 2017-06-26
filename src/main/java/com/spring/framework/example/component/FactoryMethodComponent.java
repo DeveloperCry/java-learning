@@ -16,13 +16,13 @@ import com.spring.framework.example.bean.TestBean;
  * @author Xiong.Liu
  *
  */
-@Component
+//@Component
 public class FactoryMethodComponent {
 	
 	private static int i;
 	
 	@Bean
-	@Qualifier("public")
+	@Qualifier(value = "public")
 	public TestBean publicInstance() {
 		return new TestBean("publicInstance");
 	}
