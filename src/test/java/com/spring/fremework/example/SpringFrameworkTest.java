@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-import com.spring.framework.example.lister.SimpleMovieLister;
+import com.spring.framework.example.listener.SimpleMovieLister;
 import com.spring.framework.example.service.BlogService;
 import com.spring.framework.example.service.impl.BlogServiceImpl;
 import com.spring.framework.example.service.impl.ClientService;

@@ -73,4 +73,6 @@
 	<bean id="messageService" class="com.spring.framework.example.service.impl.MessageService">
 		<property name="messageSource" ref="messageSource"/>
 	</bean>
+	
+	<bean class="com.spring.framework.example.listener.BlackListNotifier"></bean>
 </beans>

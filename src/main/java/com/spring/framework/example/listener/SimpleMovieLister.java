@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.spring.framework.example.lister;
+package com.spring.framework.example.listener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
