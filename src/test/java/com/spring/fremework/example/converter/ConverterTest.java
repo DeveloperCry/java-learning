@@ -36,6 +36,8 @@ public class ConverterTest {
 		StringToInteger st = new StringToInteger();
 		Integer num = st.convert("2345");
 		assertEquals(num, (Integer)2345);
+		System.out.println(num.compareTo(2345));
+		System.out.println(num.getClass());
 	}
 
 }
