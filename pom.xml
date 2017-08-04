@@ -100,6 +100,12 @@
 	    	<scope>compile</scope>
     	</dependency>
 	    <!-- Spring test end -->
+	    
+	    <dependency>
+	    	<groupId>org.aspectj</groupId>
+	    	<artifactId>aspectjweaver</artifactId>
+	    	<version>1.8.9</version>
+	    </dependency>
 		
 		<!-- commons start -->
 		<dependency>

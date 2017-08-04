@@ -5,6 +5,7 @@
 	xmlns:lang="http://www.springframework.org/schema/lang"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/lang
@@ -12,10 +13,14 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop 
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<context:annotation-config />
 	<context:component-scan base-package="com.spring.framework.example"/>
 	<aop:aspectj-autoproxy/>
+	<context:property-placeholder location="classpath*:conf/dev/database.properties"/>
 
 	<!-- Composing XML-based configuration metadata start -->
 	<!-- <import resource="services.xml"/> <import resource="daos.xml"/> -->
@@ -79,4 +84,39 @@
 	</bean>
 	
 	<bean class="com.spring.framework.example.listener.BlackListNotifier"></bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="connectionProperties">
+            <props>
+                <prop key="useUnicode">yes</prop>
+            </props>
+        </property>
+        
+    </bean>
+    
+    <bean id="concurrentOperationExecutor" class="com.spring.framework.example.aspect.ConcurrentOperationExecutor">
+	    <property name="maxRetries" value="3"/>
+	    <property name="order" value="100"/>
+	</bean>
+	
+	<!-- <aop:config>
+		<aop:advisor 
+		pointcut="com.spring.framework.example.aspect.SystemArchitecture.businessService()"
+		advice-ref="tx-advice"/>
+	</aop:config>
+	
+	<tx:advice id="tx-advice">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice> -->
 </beans>
