@@ -9,6 +9,6 @@ package com.learning.mode.prototype;
  */
 public class ConcretePrototype extends Prototype{
 	public void show() {
-		System.out.println("Ô­ĞÍÄ£Ê½ÊµÏÖÀà");
+		System.out.println("åŸå‹æ¨¡å¼å®ç°ç±»");
 	}
 }

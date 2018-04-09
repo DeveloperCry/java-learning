@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author Milier
- * Ç³¿½±´»úÖÆ
+ * Ã‡Â³Â¿Â½Â±Â´Â»ÃºÃ–Ã†
  */
 public class Thing implements Cloneable{
 	

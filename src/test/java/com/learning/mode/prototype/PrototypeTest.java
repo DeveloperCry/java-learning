@@ -23,7 +23,7 @@ public class PrototypeTest {
 	}
 	
 	/**
-	 * Ç³¿½±´»úÖÆ
+	 * æµ…æ‹·è´æœºåˆ¶
 	 */
 	@Test
 	public void testThing() {
@@ -37,13 +37,13 @@ public class PrototypeTest {
 	}
 	
 	/**
-	 * Éî¿½±´»úÖÆ
+	 * æ·±æ‹·è´æœºåˆ¶
 	 */
 	@Test
 	public void testDeepThing() {
 		DeepThing thing = new DeepThing();
 		System.out.println(thing.hashCode());
-//		thing.setList("12345678900");//×¢Òâ¸³ÖµµÄË³Ğò£¬ÏÈ¸³Öµºó¿½±´£¬Ò²»á½«¸³Öµ¿½±´¹ıÈ¥£¬·´Ö®£¬ÔòÃ»ÓĞ
+//		thing.setList("12345678900");//æ³¨æ„èµ‹å€¼çš„é¡ºåºï¼Œå…ˆèµ‹å€¼åæ‹·è´ï¼Œä¹Ÿä¼šå°†èµ‹å€¼æ‹·è´è¿‡å»ï¼Œåä¹‹ï¼Œåˆ™æ²¡æœ‰
 		
 		DeepThing cloneThing = thing.clone();
 		
