@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -34,7 +33,7 @@ public class SpringFrameworkTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/services.xml", "com/spring/framework/example/daos.xml"});
+		context = new ClassPathXmlApplicationContext(new String[] {"example/services.xml", "example/daos.xml"});
 		//Composing XML-based configuration metadata start
 		//context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
 		//Composing XML-based configuration metadata end
@@ -62,7 +61,7 @@ public class SpringFrameworkTest {
 	public void BlogServiceTest() {
 		
 		GenericApplicationContext ctx = new GenericApplicationContext();
-		new XmlBeanDefinitionReader(ctx).loadBeanDefinitions(new String[] {"com/spring/framework/example/services.xml", "com/spring/framework/example/daos.xml"});
+		new XmlBeanDefinitionReader(ctx).loadBeanDefinitions(new String[] {"example/services.xml", "example/daos.xml"});
 		ctx.refresh();//shouldn't be lost
 		BlogService service = ctx.getBean("blogService", BlogService.class);
 		service.getBlog();
@@ -70,7 +69,7 @@ public class SpringFrameworkTest {
 	
 	@Test
 	public void ClientServiceTest() {
-		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		context = new ClassPathXmlApplicationContext(new String[] {"example/applicationContext.xml"});
 		// createInstance called one time since the get bean twice.
 		ClientService service = context.getBean("clientService", ClientService.class);
 
@@ -82,7 +81,7 @@ public class SpringFrameworkTest {
 	
 	@Test
 	public void clientServiceLocatorTest() {
-		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		context = new ClassPathXmlApplicationContext(new String[] {"example/applicationContext.xml"});
 		// createInstance called one time since the get bean twice.
 		ClientService service = context.getBean("clientServiceLocator", ClientService.class);
 
@@ -94,7 +93,7 @@ public class SpringFrameworkTest {
 	
 	@Test
 	public void simpleMovieListerTest() {
-		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		context = new ClassPathXmlApplicationContext(new String[] {"example/applicationContext.xml"});
 		SimpleMovieLister lister = context.getBean("simpleMovieLister", SimpleMovieLister.class);
 		lister.printMovie();
 	}

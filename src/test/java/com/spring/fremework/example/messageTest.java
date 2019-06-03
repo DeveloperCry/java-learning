@@ -25,7 +25,7 @@ public class messageTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		context = new ClassPathXmlApplicationContext(new String[] {"com/spring/framework/example/applicationContext.xml"});
+		context = new ClassPathXmlApplicationContext(new String[] {"example/applicationContext.xml"});
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class messageTest {
 
 	@Test
 	public void messageSourceTest() {
-		MessageSource source = new ClassPathXmlApplicationContext("com/spring/framework/example/applicationContext.xml");
+		MessageSource source = new ClassPathXmlApplicationContext("example/applicationContext.xml");
 		String message = source.getMessage("message", null, "Default", null);
 		
 		System.out.println(message);

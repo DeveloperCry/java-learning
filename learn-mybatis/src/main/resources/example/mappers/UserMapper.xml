@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="learning.example.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="user">
+	    <id column="ID" jdbcType="INTEGER" property="id" />
+	    <result column="NAME" jdbcType="VARCHAR" property="name" />
+	    <result column="AGE" jdbcType="INTEGER" property="age" />
+	    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+	    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+	    <result column="ID_CARD" jdbcType="VARCHAR" property="idCard" />
+	    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+	    <result column="EDIT_DATE" jdbcType="TIMESTAMP" property="editDate" />
+  	</resultMap>
+  
+	<insert id="addUser" parameterType="User">
+		INSERT INTO USER(NAME, AGE, ADDRESS, PHONE_NUMBER, ID_CARD, CREATE_DATE, EDIT_DATE) 
+		VALUES(#{name}, #{age}, #{address}, #{phoneNumber}, #{idCard}, #{createDate}, #{editDate})
+	</insert>
+	
+	<!-- useGeneratedKeys and keyProperty should be used together, by this way,  the id(primary key) can be returned. -->
+	<insert id="addUserAndGeneratedKeys" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO USER(NAME, AGE, ADDRESS, PHONE_NUMBER, ID_CARD, CREATE_DATE, EDIT_DATE) 
+		VALUES(#{name}, #{age}, #{address}, #{phoneNumber}, #{idCard}, #{createDate}, #{editDate})
+	</insert>
+	
+	<insert id="addUsers" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO USER(NAME, AGE, ADDRESS, PHONE_NUMBER, ID_CARD, CREATE_DATE, EDIT_DATE) VALUES
+		<foreach item="user" collection="list" separator=","><!-- the parameter of collection must be list, set, and so on -->
+			(#{user.name}, #{user.age}, #{user.address}, #{user.phoneNumber}, #{user.idCard}, #{user.createDate}, #{user.editDate})
+		</foreach>
+	</insert>
+	
+	<update id="updateUserByName" useGeneratedKeys="true" keyProperty="id">
+		UPDATE USER SET ADDRESS = #{address} WHERE NAME = #{name}
+	</update>
+	
+	<delete id="deleteUserByName"><!-- can use tag delete and update -->
+		DELETE FROM USER WHERE NAME = #{name}
+	</delete>
+	
+	<delete id="deleteUserByNameAndAddress">
+		DELETE FROM USER WHERE NAME = #{name} AND ADDRESS = #{address}
+	</delete>
+	
+	<sql id="usertable">${prefix}ER</sql>
+	<sql id="userinclude">
+		FROM 
+			<include refid="${include_target}"/>
+	</sql>
+	
+	<select id="selectUserByName" resultType="User"><!-- Should add resultType if using mapper.xml  -->
+		SELECT ID, NAME, ADDRESS, PHONE_NUMBER
+			<include refid="userinclude">
+				<property name="prefix" value="US"/>
+				<property name="include_target" value="usertable"/>
+			</include>
+		<!--parameters can specify a more specific data type
+		#{property,javaType=int,jdbcType=NUMERIC}
+		Like the rest of MyBatis, the javaType can almost always be determined from the parameter object, unless that object is a HashMap.
+		Then the javaType should be specified to ensure the correct TypeHandler is used. 
+		  -->
+		  
+		<!-- String Substitution
+		By default, using the #{} syntax will cause MyBatis to generate PreparedStatement properties and set the values safely against the PreparedStatement parameters (e.g. ?). 
+		While this is safer, faster and almost always preferred, sometimes you just want to directly inject an unmodified string into the SQL Statement. For example, for ORDER BY, you might use something like this:
+			ORDER BY ${columnName}
+
+		Here MyBatis won't modify or escape the string.
+		NOTE It's not safe to accept input from a user and supply it to a statement unmodified in this way. 
+		This leads to potential SQL Injection attacks and therefore you should either disallow user input in these fields, 
+		or always perform your own escapes and checks.  -->
+		WHERE NAME = #{name}
+	</select>
+	
+	<resultMap type="user" id="userResultMap">
+	<!-- int enity constructor, javaType int corresponding Integer,  _int corresponding int -->
+	<!-- Since 3.4.3, we can use name like below. 3.4.2 cannot include attribute "name"
+	<constructor>
+   		<idArg column="id" javaType="int" name="id" />
+   		<arg column="age" javaType="_int" name="age" />
+   		<arg column="username" javaType="String" name="username" />
+	</constructor> -->
+		<constructor>
+			<idArg column="ID" javaType="_int"/>
+			<arg column="NAME" javaType="String"/>
+			<arg column="AGE" javaType="_int"/>
+			<arg column="ADDRESS" javaType="String"/>
+			<arg column="PHONE_NUMBER" javaType="String"/>
+			<arg column="ID_CARD" javaType="String"/>
+			<arg column="CREATE_DATE" javaType="date"/>
+			<arg column="EDIT_DATE" javaType="date"/>
+		</constructor>
+	</resultMap>
+	
+	<select id="selectUserConstructor" resultMap="userResultMap">
+		SELECT * FROM USER
+	</select>
+	
+	<resultMap type="user" id="userBlogResultMap">
+		<id property="id" column="user_id"/>
+    	<result property="name" column="user_name"/>
+    	<result property="age" column="age"/>
+    	<result property="address" column="address"/>
+    	<collection property="blogs" column="id" ofType="blog" resultMap="learning.example.mapper.BlogMapper.BaseResultMap" />
+	</resultMap>
+	<select id="selectUserWithBlog" resultMap="userBlogResultMap">
+	SELECT U.ID user_id, U.NAME user_name, U.AGE, U.ADDRESS, B.* FROM USER
+	U INNER JOIN BLOG B ON B.CREATE_USER = U.ID WHERE U.ID = #{id}
+	</select>
+</mapper>

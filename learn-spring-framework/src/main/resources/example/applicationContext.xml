@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/lang
+        http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.spring.framework.example"/>
+	<aop:aspectj-autoproxy/>
+	<context:property-placeholder location="classpath*:conf/dev/database.properties"/>
+
+	<!-- Composing XML-based configuration metadata start -->
+	<!-- <import resource="services.xml"/> <import resource="daos.xml"/> -->
+	<!-- Composing XML-based configuration metadata end -->
+
+    <!-- By this way, createClientServiceInstance must be a static method -->
+	<bean id="clientService" class="learning.example.service.impl.ClientService"
+		factory-method="createInstance" />
+
+	<bean id="serviceLocator"
+		class="learning.example.service.impl.DefaultServiceLocator" />
+    <!-- By this way, createClientServiceInstance must be a non-static method -->
+	<bean id="clientServiceLocator" factory-bean="serviceLocator"
+		factory-method="createClientServiceInstance" />
+	
+	<bean id="bar" class="learning.example.injection.Bar" />
+	<bean id="baz" class="learning.example.injection.Baz" />
+	
+	<bean id="foo" class="learning.example.injection.Foo">
+	   <constructor-arg ref="bar"/>
+	   <constructor-arg ref="baz"/>
+	</bean>
+	
+	<bean id="parent" class="learning.example.injection.ComplexObject">
+	   <property name="adminEmails">
+	       <props>
+	           <prop key="administrator">administrator@example.com</prop>
+	           <prop key="support">support@example.com</prop>
+	       </props>
+	   </property>
+	</bean>
+	
+	<bean id="child" parent="parent">
+	   <property name="adminEmails">
+	       <props merge="true">
+	           <prop key="administrator2">administrator11@example.com</prop>
+               <prop key="support">support@example.com</prop>
+	       </props>
+	   </property>
+	</bean>
+	
+	<!-- Customizing beans using a BeanPostProcessor start -->
+	<!-- <lang:groovy id="messenger" script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
+	   <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
+	</lang:groovy> -->
+	
+	<!-- <bean class="InstantiationTracingBeanPostProcessor"/> -->
+	<!-- Customizing beans using a BeanPostProcessor start -->
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>com/spring/framework/example/prop/format</value>
+				<value>com/spring/framework/example/prop/exceptions</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageService" class="learning.example.service.impl.MessageService">
+		<property name="messageSource" ref="messageSource"/>
+	</bean>
+	
+	<bean class="learning.example.listener.BlackListNotifier"></bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="connectionProperties">
+            <props>
+                <prop key="useUnicode">yes</prop>
+            </props>
+        </property>
+        
+    </bean>
+    
+    <bean id="concurrentOperationExecutor" class="learning.example.aspect.ConcurrentOperationExecutor">
+	    <property name="maxRetries" value="3"/>
+	    <property name="order" value="100"/>
+	</bean>
+	
+	<!-- <aop:config>
+		<aop:advisor 
+		pointcut="SystemArchitecture.businessService()"
+		advice-ref="tx-advice"/>
+	</aop:config>
+	
+	<tx:advice id="tx-advice">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice> -->
+</beans>

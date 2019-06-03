@@ -3,8 +3,6 @@
  */
 package com.spring.fremework.example.spel;
 
-import static org.junit.Assert.*;
-
 import java.util.GregorianCalendar;
 
 import org.junit.After;
