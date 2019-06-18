@@ -11,8 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mybatis.example.enity.Blog;
-import com.mybatis.example.enity.User;
+import learning.example.enity.Blog;
+import learning.example.enity.User;
 
 /**
  * @author Xiong.Liu

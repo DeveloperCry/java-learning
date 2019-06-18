@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mybatisSpring.example.enity.User;
-import com.mybatisSpring.example.mapper.UserMapper;
+import learning.example.enity.User;
+import learning.example.mapper.UserMapper;
 
 /**
  * @author Xiong.Liu

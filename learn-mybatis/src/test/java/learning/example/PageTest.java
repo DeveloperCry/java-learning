@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import learning.example.enity.Blog;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,10 +15,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mybatis.example.enity.Blog;
-import com.mybatis.example.enity.Page;
-import com.mybatis.example.factory.SqlSessionFactories;
-import com.mybatis.example.mapper.BlogMapper;
+import learning.example.enity.Page;
+import learning.example.factory.SqlSessionFactories;
+import learning.example.mapper.BlogMapper;
 
 /**
  * @author Xiong.Liu
