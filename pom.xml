@@ -11,6 +11,7 @@
 		<module>learn-mybatis</module>
         <module>learn-mybatis-spring</module>
 		<module>learn-spring-framework</module>
+		<module>learn-arithmetic</module>
 	</modules>
 	<packaging>pom</packaging>
 	<name>learning</name>
