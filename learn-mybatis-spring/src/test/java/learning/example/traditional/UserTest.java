@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.mybatisSpring.example.enity.User;
-import com.mybatisSpring.example.mapper.UserMapper;
+import learning.example.enity.User;
+import learning.example.mapper.UserMapper;
 
 /**
  * @author Xiong.Liu

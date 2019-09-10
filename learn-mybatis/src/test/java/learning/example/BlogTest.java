@@ -13,9 +13,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mybatis.example.enity.Blog;
-import com.mybatis.example.factory.SqlSessionFactories;
-import com.mybatis.example.mapper.BlogMapper;
+import learning.example.enity.Blog;
+import learning.example.factory.SqlSessionFactories;
+import learning.example.mapper.BlogMapper;
 
 /**
  * @author Xiong.Liu
