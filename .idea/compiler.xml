@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="learn-mybatis" />
+        <module name="learn-jvm" />
+        <module name="learn-spring-framework" />
+        <module name="learn-mode" />
+        <module name="learn-mybatis-spring" />
+        <module name="learn-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="learn-core" target="1.8" />
+      <module name="learn-jvm" target="1.8" />
+      <module name="learn-mode" target="1.8" />
+      <module name="learn-mybatis" target="1.8" />
+      <module name="learn-mybatis-spring" target="1.8" />
+      <module name="learn-spring-framework" target="1.8" />
+      <module name="learning" target="1.8" />
+      <module name="mode" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="learn-core" options="-Xlint:all" />
+      <module name="learn-jvm" options="-Xlint:all" />
+      <module name="learn-mode" options="-Xlint:all" />
+      <module name="learn-mybatis" options="-Xlint:all" />
+      <module name="learn-mybatis-spring" options="-Xlint:all" />
+      <module name="learn-spring-framework" options="-Xlint:all" />
+      <module name="learning" options="" />
+      <module name="mode" options="-Xlint:all" />
+    </option>
+  </component>
+</project>
