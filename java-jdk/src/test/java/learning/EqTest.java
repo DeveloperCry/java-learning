@@ -1,7 +1,10 @@
-package learning.data;
+package learning;
+
+import org.junit.Test;
 
 public class EqTest {
-    public static void main(String[] args) {
+    @Test
+    public void testEq() {
         Integer i = 7;
         Integer j = 7;
         System.out.println(i == j);
