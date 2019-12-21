@@ -21,6 +21,7 @@
 	
 	<properties>
 		<spring.version>4.3.8.RELEASE</spring.version>
+		<project.lombok.version>1.18.8</project.lombok.version>
 	</properties>
 
 	<dependencies>
@@ -173,7 +174,12 @@
 			<artifactId>tess4j</artifactId>
 			<version>4.3.1</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${project.lombok.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -1,9 +1,5 @@
 package learning.factory.simplefactory2;
 
-import learning.factory.simplefactory2.support.ChineseBook;
-import learning.factory.simplefactory2.support.EnglishBook;
-import learning.factory.simplefactory2.support.MathBook;
-
 import java.lang.reflect.InvocationTargetException;
 
 /**
