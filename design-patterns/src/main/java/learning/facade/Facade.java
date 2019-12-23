@@ -1,6 +1,7 @@
 package learning.facade;
 
 import learning.facade.inner.Administration;
+import learning.facade.inner.Context;
 import learning.facade.inner.HumanResource;
 import learning.facade.inner.TechnicalDivision;
 
@@ -19,7 +20,7 @@ import learning.facade.inner.TechnicalDivision;
 public class Facade {
     private Administration administration = new Administration();
     private HumanResource humanResource = new HumanResource();
-    private TechnicalDivision technicalDivision = new TechnicalDivision();
+    private Context context = new Context();
 
     public void manager() {
         this.administration.manager();
@@ -29,7 +30,7 @@ public class Facade {
         this.humanResource.personnel();
     }
 
-    public void maintain() {
-        this.technicalDivision.maintain();
+    public void doContext() {
+        this.context.doContext();
     }
 }
