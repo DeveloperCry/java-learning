@@ -16,5 +16,9 @@ public class MediatorTest {
         Alertor alertor = new Alertor(mediator);
 
         phone.leaveHome();
+        System.out.println("=============");
+        sensor.breakIn();
+        System.out.println("=============");
+        phone.backHome();
     }
 }

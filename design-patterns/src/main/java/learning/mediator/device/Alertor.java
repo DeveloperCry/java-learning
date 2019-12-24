@@ -3,6 +3,7 @@ package learning.mediator.device;
 import learning.mediator.Device;
 import learning.mediator.DeviceType;
 import learning.mediator.Mediator;
+import learning.mediator.OptionType;
 
 public class Alertor extends Device {
     public Alertor(Mediator mediator) {
@@ -16,6 +17,7 @@ public class Alertor extends Device {
 
     public void alarm() {
         System.out.println("我是警报器，我在发出警报。。。。");
+        super.option(DeviceType.PHONE, OptionType.ACCEPT_MESSAGE.getOption(), "警报器响了");
     }
 
     public void close() {

@@ -3,6 +3,7 @@ package learning.mediator.device;
 import learning.mediator.Device;
 import learning.mediator.DeviceType;
 import learning.mediator.Mediator;
+import learning.mediator.OptionType;
 
 public class Phone extends Device {
     public Phone(Mediator mediator) {
@@ -14,19 +15,23 @@ public class Phone extends Device {
         System.out.println("我接收到的视频是 " + video);
     }
 
+    public void acceptMessage(String message) {
+        System.out.println("我接收到的信息是 " + message);
+    }
+
     public void leaveHome() {
         System.out.println("我离开家了");
-        super.option(DeviceType.CAMERA, "open");
-        super.option(DeviceType.ALERTOR, "open");
-        super.option(DeviceType.SENSOR, "open");
-        super.option(DeviceType.TV, "close");
+        super.option(DeviceType.CAMERA, OptionType.OPEN.getOption());
+        super.option(DeviceType.ALERTOR, OptionType.OPEN.getOption());
+        super.option(DeviceType.SENSOR, OptionType.OPEN.getOption());
+        super.option(DeviceType.TV, OptionType.CLOSE.getOption());
     }
 
     public void backHome() {
         System.out.println("我回家了");
-        super.option(DeviceType.CAMERA, "close");
-        super.option(DeviceType.ALERTOR, "close");
-        super.option(DeviceType.SENSOR, "close");
-        super.option(DeviceType.TV, "open");
+        super.option(DeviceType.CAMERA, OptionType.CLOSE.getOption());
+        super.option(DeviceType.ALERTOR, OptionType.CLOSE.getOption());
+        super.option(DeviceType.SENSOR, OptionType.CLOSE.getOption());
+        super.option(DeviceType.TV, OptionType.OPEN.getOption());
     }
 }

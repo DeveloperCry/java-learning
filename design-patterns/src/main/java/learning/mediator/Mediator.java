@@ -12,5 +12,5 @@ import java.util.Map;
  */
 public abstract class Mediator {
     public abstract void register(DeviceType deviceType, Device device);
-    public abstract void doOption(DeviceType deviceType, String option);//这个是消息通知的规范
+    public abstract void doOption(DeviceType deviceType, String option, Object... objects);//这个是消息通知的规范
 }
