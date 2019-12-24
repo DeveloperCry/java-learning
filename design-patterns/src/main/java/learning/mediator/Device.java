@@ -5,5 +5,8 @@ public abstract class Device {
     public Device(Mediator mediator) {
         this.mediator = mediator;
     }
-    public abstract void option(DeviceType deviceType);
+
+    public void option(DeviceType deviceType, String option){//发送执行命令
+        this.mediator.doOption(deviceType, option);
+    }
 }

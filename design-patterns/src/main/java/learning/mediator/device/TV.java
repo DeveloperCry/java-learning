@@ -10,8 +10,11 @@ public class TV extends Device {
         mediator.register(DeviceType.TV, this);
     }
 
-    @Override
-    public void option(DeviceType deviceType) {
+    public void open() {
+        System.out.println("我正在打开电视。。。。");
+    }
 
+    public void close() {
+        System.out.println("我正在关闭电视。。。。");
     }
 }
