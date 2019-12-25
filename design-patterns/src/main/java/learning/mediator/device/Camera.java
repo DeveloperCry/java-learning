@@ -1,14 +1,11 @@
 package learning.mediator.device;
 
 import learning.mediator.Device;
-import learning.mediator.DeviceType;
 import learning.mediator.Mediator;
-import learning.mediator.OptionType;
 
 public class Camera extends Device {
     public Camera(Mediator mediator) {
         super(mediator);
-        mediator.register(DeviceType.CAMERA, this);
     }
 
     public void open() {
@@ -21,6 +18,6 @@ public class Camera extends Device {
 
     public void shoot() {
         System.out.println("我是摄像机，我拍摄到有画面。。。");
-        super.option(DeviceType.PHONE, OptionType.ACCEPT_VIDEO.getOption(), "go.mp4");
+        super.mediator.sendVideo("move.mp4");
     }
 }

@@ -8,17 +8,17 @@ public class MediatorTest {
     @Test
     public void testMediator() {
         Mediator mediator = new ConcreteMediator();
+        mediator.register(new TV(mediator));
+        mediator.register(new Phone(mediator));
+        mediator.register(new Alertor(mediator));
+        mediator.register(new Camera(mediator));
+        mediator.register(new Sensor(mediator));
 
-        Phone phone = new Phone(mediator);
-        Camera camera = new Camera(mediator);
-        TV tv = new TV(mediator);
-        Sensor sensor = new Sensor(mediator);
-        Alertor alertor = new Alertor(mediator);
-
-        phone.leaveHome();
-        System.out.println("=============");
-        sensor.breakIn();
-        System.out.println("=============");
-        phone.backHome();
+        System.out.println("主人离家=============");
+        mediator.leaveHome();
+        System.out.println("\n非法闯入=============");
+        mediator.breakIn();
+        System.out.println("\n主人回家=============");
+        mediator.backHome();
     }
 }
