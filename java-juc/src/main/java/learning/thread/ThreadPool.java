@@ -7,10 +7,10 @@ import java.util.concurrent.Future;
 
 public class ThreadPool {
     public static void main(String[] args) {
-        ExecutorService theadPool = Executors.newFixedThreadPool(10);
+        ExecutorService threadPool = Executors.newFixedThreadPool(10);
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
-            theadPool.execute(new Runnable() {
+            threadPool.execute(new Runnable() {
                 @Override
                 public void run() {
                     System.out.format("线程%s正在执行.....\n", Thread.currentThread().getName());
@@ -26,7 +26,7 @@ public class ThreadPool {
         System.out.format("创建线程用时：%d\n", endTime - startTime);
 
         for (int i = 0; i < 10; i++) {
-            Future future = theadPool.submit(new Runnable() {
+            Future future = threadPool.submit(new Runnable() {
                 @Override
                 public void run() {
                     System.out.format("线程%s正在执行.....\n", Thread.currentThread().getName());
@@ -47,7 +47,7 @@ public class ThreadPool {
         }
 
 
-        theadPool.shutdown();
+        threadPool.shutdown();
         endTime = System.currentTimeMillis();
         System.out.format("创建线程用时：%d\n", endTime - startTime);
     }
