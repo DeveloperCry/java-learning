@@ -1,5 +1,10 @@
-package learning.thread;
+package learning.thread.startathread;
 
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 这是一个继承Thread的线程
+ */
 public class ExtendsThread extends Thread{
 
     public ExtendsThread(String name) {
@@ -7,10 +12,10 @@ public class ExtendsThread extends Thread{
     }
     @Override
     public void run() {
-        while (!interrupted()) {
-            System.out.println(super.getName() + "正在执行....." + interrupted());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(super.getName() + " " + i + "正在执行.....");
             try {
-                Thread.sleep(2000);
+                TimeUnit.MILLISECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -1,4 +1,4 @@
-package learning.thread;
+package learning.thread.startathread;
 
 import java.util.Timer;
 import java.util.TimerTask;
