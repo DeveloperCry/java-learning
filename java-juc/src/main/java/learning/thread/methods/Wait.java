@@ -16,11 +16,6 @@ public class Wait {
         });
 
         Thread t2 = new Thread(() -> {
-            try {
-                t1.wait(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             for (int i = 0; i < 10; i++) {
                 System.out.println(Thread.currentThread().getName() + "：" + i + ", 其状态是：" + Thread.currentThread().getState());
                 try {
@@ -28,10 +23,19 @@ public class Wait {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                if (i == 3) {
+                    t1.notify();
+                }
             }
         });
 
         t1.start();
+        try {
+            t1.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         t2.start();
     }
 }
