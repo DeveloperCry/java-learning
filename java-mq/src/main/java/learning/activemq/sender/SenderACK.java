@@ -5,7 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class Sender {
+public class SenderACK {
     public static void main(String[] args) throws JMSException {
         // 1. 建立工厂对象
 //        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(

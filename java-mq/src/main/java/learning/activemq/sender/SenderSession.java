@@ -5,7 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class Sender {
+public class SenderSession {
     public static void main(String[] args) throws JMSException {
         // 1. 建立工厂对象
 //        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(
@@ -23,7 +23,7 @@ public class Sender {
         // 如果这里的事务(transacted)设置true,则需要手动提交事务，否则消息不会被提交到MQ服务器。
         // 并且只要消息没有被提交，则可以rollback；如果被提交了，则不能rollback
         // 只有transacted设置为false，第二个参数才会生效，否则第二个参数会被Session.SESSION_TRANSACTED覆盖
-        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
         // 4. 从会话中获取目的地(Destination)消费者会从这个目的地取消息
         Queue destination = session.createQueue("mq");
 
@@ -36,6 +36,7 @@ public class Sender {
         // 7. 通过消息提供者发送消息到ActiveMQ
         producer.send(textMessage);
         System.out.println("消息发送成功");
+        session.commit(); //transacted 为true的时候手动提交事务
 
         // 8. 关闭连接，这个一定不要忘记了
         connection.close();
