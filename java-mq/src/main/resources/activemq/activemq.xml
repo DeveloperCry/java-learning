@@ -38,8 +38,11 @@
         这里还有一个坑，就是一定要将对应数据库的connector包引入到lib目录下，因为原始的lib包下面是没有驱动包的，这里应该引入的是mysql-connector-java-5.1.43。否则会报错，
     -->
     <bean id="mysql-ds" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/activemq?relaxAutoCommit=true"/>
+        <!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/activemq?relaxAutoCommit=true"/> -->
+        <!-- mysql8 用以下链接 -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/activemq?relaxAutoCommit=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;rewriteBatchedStatements=true"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="maxTotal" value="200"/><!-- 这个版本用的是maxTotal, org.apache.commons.dbcp.BasicDataSource用的是maxActive -->
@@ -117,6 +120,19 @@
                 </tempUsage>
             </systemUsage>
         </systemUsage>
+
+        <!-- 设置客户端连接安全机制 配置过后就需要在连接mq的时候强制输入用户名和密码，不能使用默认的用户名和密码-->
+        <plugins>
+            <jaasAuthenticationPlugin configuration="activemq" />
+            <!-- <simpleAuthenticationPlugin>
+                <users>
+                    <authenticationUser username="system" password="manager" groups="users,admins"/>
+                    <authenticationUser username="user" password="password" groups="users"/>
+                    <authenticationUser username="guest" password="password" groups="guests"/>
+                    <authenticationUser username="consumer" password="consumer" groups="consumers"/>
+                </users>
+            </simpleAuthenticationPlugin> -->
+        </plugins>
 
         <!--
             The transport connectors expose ActiveMQ over a given protocol to
