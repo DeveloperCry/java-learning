@@ -5,12 +5,12 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
+/**
+ * 消费端会自动根据分组(groupId)来分配，分组相同的信息(groupID)会由同一个消费端消费，同时这个也有负载均衡的概念
+ * 这个与消息独占和消息selector有区别，这个消费端不用进行任何的设置
+ */
 public class ConsumerGroup {
     public static void main(String[] args) throws JMSException {
-//        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(
-//                Constants.MQ_USER_NAME,
-//                Constants.MQ_PASSWORD,
-//                Constants.MQ_BROKER_URL);//一定要注意这里的端口号，还有使用的协议，一定要和启动服务器时那些端口一致
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(
                 ActiveMQConnectionFactory.DEFAULT_USER,
                 ActiveMQConnectionFactory.DEFAULT_PASSWORD,
@@ -24,9 +24,18 @@ public class ConsumerGroup {
 
         MessageConsumer consumer = session.createConsumer(destination);
 
-        while (true) {
-            TextMessage message = (TextMessage) consumer.receive();
-            System.out.println(message.getText());
-        }
+        consumer.setMessageListener(message -> {
+            if (message instanceof TextMessage) {
+                TextMessage textMessage = (TextMessage) message;
+                System.out.println(message);
+                try {
+                    System.out.println(textMessage.getText());
+                } catch (JMSException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("获取信息失败");
+            }
+        });
     }
 }

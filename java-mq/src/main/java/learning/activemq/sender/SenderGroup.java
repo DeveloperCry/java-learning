@@ -31,10 +31,15 @@ public class SenderGroup {
         MessageProducer producer = session.createProducer(destination);
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
-        // 6. 从会话中创建文本消息(也可以创建其它类型的消息体)
-        TextMessage textMessage = session.createTextMessage("这是第一条activeMQ消息");
-        // 7. 通过消息提供者发送消息到ActiveMQ
-        producer.send(textMessage);
+        for (int i = 0; i < 10; i++) {
+            // 6. 从会话中创建文本消息(也可以创建其它类型的消息体)
+            TextMessage textMessage = session.createTextMessage("这是第" + i + "条activeMQ消息");
+            //设置分组，消费端会自动根据这个分组来分配，分组相同的信息(groupID)会由同一个消费端消费，同时这个也有负载均衡的概念
+            textMessage.setStringProperty("JMSXGroupID", "messageGroup" + (i % 4));
+            // 7. 通过消息提供者发送消息到ActiveMQ
+            producer.send(textMessage);
+        }
+
         System.out.println("消息发送成功");
 
         // 8. 关闭连接，这个一定不要忘记了
