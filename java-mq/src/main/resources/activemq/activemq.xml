@@ -60,6 +60,25 @@
                     <!-- 配置优先级 -->
                     <policyEntry queue="persistence_mq" prioritizedMessages="true" />
                     <policyEntry topic="topic_mq" prioritizedMessages="true" />
+                    <!-- 非持久化队列进入到死信队列 -->
+                    <policyEntry queue="dead_letter_mq" prioritizedMessages="true">
+                        <deadLetterStrategy>
+                            <individualDeadLetterStrategy processNonPersistent="true" />
+                        </deadLetterStrategy>
+                    </policyEntry>
+                    <!-- 过期消息不进入到死信队列 -->
+                    <policyEntry queue="give_up_dead_letter_mq" prioritizedMessages="true">
+                        <deadLetterStrategy>
+                            <individualDeadLetterStrategy processExpired="false" />
+                        </deadLetterStrategy>
+                    </policyEntry>
+                    <!-- 更改死信队列名称 -->
+                    <policyEntry queue="change_dead_letter_name_mq" prioritizedMessages="true">
+                        <deadLetterStrategy>
+                            <!-- useQueueForQueueMessages: 设置使用队列保存死信，还可以设置useQueueForTopicMessages，使用Topic来保存死信 -->
+                            <individualDeadLetterStrategy queuePrefix="User.DLQ.Queue." useQueueForQueueMessages="true" />
+                        </deadLetterStrategy>
+                    </policyEntry>
                     <policyEntry topic=">" >
                         <!-- The constantPendingMessageLimitStrategy is used to prevent
                              slow topic consumers to block producers and affect other consumers
