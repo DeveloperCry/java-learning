@@ -9,12 +9,26 @@
         <module name="learn-mybatis" />
         <module name="learn-jvm" />
         <module name="learn-spring-framework" />
-        <module name="learn-mode" />
+        <module name="learn-third-example" />
+        <module name="java-nosql" />
+        <module name="java-juc" />
+        <module name="java-mq" />
         <module name="learn-mybatis-spring" />
+        <module name="learn-arithmetic" />
+        <module name="design-patterns" />
         <module name="learn-core" />
+        <module name="java-jdk" />
+        <module name="learning-spring-boot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="design-patterns" target="1.8" />
+      <module name="java-jdk" target="1.7" />
+      <module name="java-juc" target="1.8" />
+      <module name="java-learning" target="1.8" />
+      <module name="java-mq" target="1.8" />
+      <module name="java-nosql" target="1.8" />
+      <module name="learn-arithmetic" target="1.7" />
       <module name="learn-core" target="1.8" />
       <module name="learn-jvm" target="1.8" />
       <module name="learn-mode" target="1.8" />

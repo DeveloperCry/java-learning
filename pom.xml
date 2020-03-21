@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.6.RELEASE</version>
+		<version>2.2.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>java-learning</groupId>
@@ -12,6 +12,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>java-mq</module>
+		<module>java-nosql</module>
 		<module>learn-jvm</module>
 		<module>learn-mybatis</module>
         <module>learn-mybatis-spring</module>
