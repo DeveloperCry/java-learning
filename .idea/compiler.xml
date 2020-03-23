@@ -2,23 +2,25 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="learn-mybatis" />
         <module name="learn-jvm" />
-        <module name="learn-spring-framework" />
-        <module name="learn-third-example" />
-        <module name="java-nosql" />
-        <module name="java-juc" />
-        <module name="java-mq" />
-        <module name="learn-mybatis-spring" />
-        <module name="learn-arithmetic" />
-        <module name="design-patterns" />
-        <module name="learn-core" />
         <module name="java-jdk" />
+        <module name="java-nosql" />
+        <module name="design-patterns" />
+        <module name="learn-mybatis" />
+        <module name="learn-arithmetic" />
+        <module name="learn-mybatis-spring" />
+        <module name="learn-core" />
         <module name="learning-spring-boot" />
+        <module name="java-mq" />
+        <module name="java-juc" />
+        <module name="learn-third-example" />
+        <module name="learn-spring-framework" />
+        <module name="java-zookeeper" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
