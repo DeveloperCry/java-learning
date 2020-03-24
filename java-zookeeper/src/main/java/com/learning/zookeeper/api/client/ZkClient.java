@@ -1,7 +1,7 @@
-package com.learning.zookeeper.client;
+package com.learning.zookeeper.api.client;
 
-import com.learning.zookeeper.config.ZkConfig;
-import com.learning.zookeeper.watcher.DefaultWatcher;
+import com.learning.zookeeper.api.config.ZkConfig;
+import com.learning.zookeeper.api.watcher.DefaultWatcher;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.learning.zookeeper.watcher;
+package com.learning.zookeeper.api.watcher;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;

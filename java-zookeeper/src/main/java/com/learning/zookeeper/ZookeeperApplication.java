@@ -1,6 +1,6 @@
 package com.learning.zookeeper;
 
-import com.learning.zookeeper.client.ZkClient;
+import com.learning.zookeeper.api.client.ZkClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;

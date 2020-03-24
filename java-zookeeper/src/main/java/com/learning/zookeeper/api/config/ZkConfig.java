@@ -1,4 +1,4 @@
-package com.learning.zookeeper.config;
+package com.learning.zookeeper.api.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

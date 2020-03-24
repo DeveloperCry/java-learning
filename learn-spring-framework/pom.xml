@@ -80,6 +80,11 @@
         </dependency>
         <!-- Spring end -->
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
         <!-- Spring test start -->
         <dependency>
             <groupId>org.springframework</groupId>
