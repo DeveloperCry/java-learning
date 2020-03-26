@@ -1,4 +1,4 @@
-package com.learning.zookeeper.api.config;
+package com.learning.zookeeper.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,4 +10,5 @@ import org.springframework.context.annotation.Configuration;
 public class ZkConfig {
     private String url;
     private int timeOut;
+    private String configCenterPath;
 }
