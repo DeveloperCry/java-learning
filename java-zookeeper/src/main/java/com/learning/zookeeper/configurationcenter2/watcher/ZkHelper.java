@@ -2,7 +2,7 @@ package com.learning.zookeeper.configurationcenter2.watcher;
 
 import com.learning.zookeeper.config.ZkConfig;
 import com.learning.zookeeper.configurationcenter2.IWatcher;
-import com.learning.zookeeper.configurationcenter2.utils.ZkUtil;
+import com.learning.zookeeper.utils.ZkUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.WatchedEvent;

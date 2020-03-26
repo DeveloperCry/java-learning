@@ -11,4 +11,5 @@ public class ZkConfig {
     private String url;
     private int timeOut;
     private String configCenterPath;
+    private String lockPath;
 }

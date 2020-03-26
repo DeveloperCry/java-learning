@@ -1,7 +1,7 @@
-package com.learning.zookeeper.configurationcenter.utils;
+package com.learning.zookeeper.utils;
 
 import com.learning.zookeeper.config.ZkConfig;
-import com.learning.zookeeper.configurationcenter.watcher.DefaultWatcher;
+import com.learning.zookeeper.configurationcenter2.watcher.DefaultWatcher;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.util.concurrent.CountDownLatch;
@@ -11,9 +11,13 @@ public class ZkUtil {
     private static ZooKeeper zk;
 
     public static ZooKeeper getZookeeper(ZkConfig zkConfig) {
+        return getZookeeper(zkConfig, false);
+    }
+
+    public static ZooKeeper getZookeeper(ZkConfig zkConfig, boolean isLock) {
         DefaultWatcher watcher = new DefaultWatcher(countDownLatch);
         try {
-            zk = new ZooKeeper(zkConfig.getUrl() + zkConfig.getConfigCenterPath(), zkConfig.getTimeOut(), watcher);
+            zk = new ZooKeeper(zkConfig.getUrl() + (isLock ? zkConfig.getLockPath() : zkConfig.getConfigCenterPath()), zkConfig.getTimeOut(), watcher);
             countDownLatch.await();
         } catch (Exception e) {
             e.printStackTrace();
