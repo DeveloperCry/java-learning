@@ -21,7 +21,6 @@
 		<module>design-patterns</module>
 		<module>java-juc</module>
 		<module>java-jdk</module>
-		<module>learning-spring-boot</module>
 		<module>learn-third-example</module>
 		<module>java-zookeeper</module>
 		<module>springboot-demo</module>
