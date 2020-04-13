@@ -24,6 +24,7 @@
 		<module>learning-spring-boot</module>
 		<module>learn-third-example</module>
 		<module>java-zookeeper</module>
+		<module>springboot-demo</module>
 	</modules>
 	<packaging>pom</packaging>
 	<name>java-learning</name>

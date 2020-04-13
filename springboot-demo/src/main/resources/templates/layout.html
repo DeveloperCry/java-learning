@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="common_header(title,links)">
+        <meta charset="UTF-8">
+        <title th:replace="${title}">OA系统</title>
+        <!-- Common styles and scripts -->
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+        <script th:src="@{/js/jquery-3.4.1.min.js}" ></script>
+        <script th:src="@{/js/bootstrap.min.js}" ></script>
+        <script th:src="@{/js/bootstrap-table.min.js}" ></script>
+        <script th:src="@{/js/bootstrap-table-locale-all.min.js}" ></script>
+        <script th:src="@{/js/common.js}" ></script>
+
+        <!--/* Per-page placeholder for additional links */-->
+        <th:block th:replace="${links}" />
+    </head>
+    <body>
+        <div class="nav-bar" th:fragment="layout(activePage, content)">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top flex-md-nowrap p-0 shadow">
+                <!--根据屏幕的大小自适应-->
+                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>-->
+                <a class="navbar-brand mr-0" href="/index">首页</a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+                    <ul th:if="${session.account_session} == null" class="navbar-nav form-inline my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">登录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">注册</a>
+                        </li>
+                    </ul>
+                    <ul th:if="${session.account_session} != null" class="navbar-nav form-inline my-2 my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarProfileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                你好！[[${session.account_session.name}]]
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarProfileDropdown">
+                                <a class="dropdown-item" href="/acc/profile">个人资料</a>
+                                <a class="dropdown-item" href="/acc/resetPassword">修改密码</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">退出</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="navbar-dark bg-dark sidebar">
+                        <div class="sidebar-sticky">
+                            <ul class="nav flex-column">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="accordion" id="systemManagement">
+                                        <div>
+                                            <div id="systemHeading">
+                                                <a class="nav-link text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSystem" aria-expanded="false" aria-controls="collapseSystem">
+                                                    系统管理
+                                                </a>
+                                            </div>
+                                            <div id="collapseSystem" class="collapse" aria-labelledby="systemHeading" data-parent="#systemManagement">
+                                                <div class="collapse-child">
+                                                    <a class="nav-link" href="/acc/list">用户管理</a>
+                                                    <a class="nav-link" href="#">角色管理</a>
+                                                    <a class="nav-link" href="#">权限管理</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">link</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <main role="main" class="ml-sm-auto px-4" style="width: 88%">
+                        <div class="py-3">
+                            <div th:replace="${content}"></div>
+                        </div>
+
+                    </main>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

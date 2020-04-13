@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: common_header(~{::title},~{::script})">
+        <title>系统管理</title>
+
+        <script th:src="@{/js/account.js}" ></script>
+    </head>
+    <body>
+        <div>
+        <div th:insert="layout :: layout('system', ~{:: section})">
+            <section>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div>
+                        <button type="button" class="btn btn-outline-primary">添加</button>
+                    </div>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="查找" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">序号</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">用户名</th>
+                                <th scope="col">姓名</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="acc : ${accPage.records}">
+                                <th scope="row" th:text="${accStat.count}"></th>
+                                <td th:text="${acc.id}"></td>
+                                <td th:text="${acc.username}"></td>
+                                <td th:text="${acc.name}"></td>
+                                <td>
+                                    <button type="button" class="btn btn-warning">修改</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:data-username="${acc.username}" th:data-id="${acc.id}">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item" th:classappend="${accPage.hasPrevious()} ? '' : 'disabled'"><a class="page-link" href="#">前一页</a></li>
+                            <li class="page-item" th:each="index : ${accPage.navigatepageNums}"><a class="page-link" th:href="@{/acc/list(pageNum=${index})}" th:text="${index}"></a></li>
+                            <li class="page-item" th:classappend="${accPage.hasNext()} ? '' : 'disabled'"><a class="page-link" href="#">下一页</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">警告</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>确定删除<span class="username"></span>？</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a role="button" class="btn btn-danger delete-confirm" href="#">删除</a>
+                                <button type="button" class="btn btn-secondary .delete-cancel" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div th:insert="footer :: copy"></div>
+        </div>
+    </body>
+</html>

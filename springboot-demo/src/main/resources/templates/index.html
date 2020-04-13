@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: common_header(~{::title},~{})">
+        <title>首页</title>
+    </head>
+    <body>
+        <div th:insert="layout :: layout('index', ~{:: section})">
+            <section>
+                <div class="jumbotron">
+                    <h1 class="display-4">欢迎使用XXXOA系统</h1>
+                </div>
+            </section>
+        </div>
+        <div th:insert="footer :: copy"></div>
+    </body>
+</html>

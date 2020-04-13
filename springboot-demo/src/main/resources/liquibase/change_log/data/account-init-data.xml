@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="init-account-schema" author="chris" >
+        <comment>init account admin</comment>
+        <sql>
+            INSERT INTO `demo`.`account` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `PHONE`, `EMAIL`, `STATUS`, `CREATE_DATE`, `CREATE_USER`, `EDIT_DATE`, `EDIT_USER`) VALUES ('1', '超级管理员', 'systemadmin', '123456', '12345678912', 'test@test.com', '1', '2019-10-17 21:18:45.000000', '1', '2019-10-17 21:18:50.000000', '1');
+        </sql>
+    </changeSet>
+
+   <changeSet id="init-role-schema" author="chris" >
+        <comment>init user system admin</comment>
+        <sql>
+            INSERT INTO `demo`.`role` (`ID`, `NAME`, `STATUS`, `REMARK`, `CREATE_DATE`, `CREATE_USER`, `EDIT_DATE`, `EDIT_USER`) VALUES ('1', '超级管理员', '1', '超级管理员', '2019-10-25 12:08:53.000000', '1', '2019-10-25 12:08:58.000000', '1');
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-accoun-role-schema" author="chris" >
+        <comment>init user system admin</comment>
+        <sql>
+            INSERT INTO `demo`.`ACCOUNT_ROLE` (`ROLE_ID`, `ACCOUNT_ID`) VALUES ('1', '1');
+        </sql>
+    </changeSet>
+
+    <!--  <changeSet id="init-sys-permission-schema" author="chris" >
+         <comment>init user system admin</comment>
+         <sql>
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('1', '系统管理', '/sys', 'settings_light', 'DIRECTORY', 'sys', '1', '1', '0');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('2', '用户管理', '/sys/user', 'GET', 'people', 'MENU', 'sys:user:list', '1', '1', '1');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('3', '角色管理', '/sys/role', 'GET', 'people_list_light', 'MENU', 'sys:role:list', '1', '2', '1');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('4', '权限管理', '/sys/permission', 'GET', 'lock', 'MENU', 'sys:permission:list', '1', '3', '1');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('5', '添加角色', '/sys/role/add', 'POST', '', 'BUTTON', 'sys:role:add', '1', '1', '3');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('6', '编辑角色', '/sys/role/update', 'POST', '', 'BUTTON', 'sys:role:edit', '1', '1', '3');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('7', '删除角色', '/sys/role/delete', 'DELETE', '', 'BUTTON', 'sys:role:delete', '1', '1', '3');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('8', '添加用户', '/sys/user/add', 'POST', '', 'BUTTON', 'sys:user:add', '1', '1', '2');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('9', '编辑用户', '/sys/user/update', 'POST', '', 'BUTTON', 'sys:user:edit', '1', '1', '2');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('10', '删除用户', '/sys/user/delete', 'DELETE', '', 'BUTTON', 'sys:user:delete', '1', '1', '2');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('11', '添加权限', '/sys/permission/add', 'POST', '', 'BUTTON', 'sys:permission:add', '1', '1', '4');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('12', '编辑权限', '/sys/permission/update', 'POST', '', 'BUTTON', 'sys:permission:edit', '1', '1', '4');
+             INSERT INTO `imall`.`sys_permission` (`ID`, `NAME`, `PATH`, `METHOD`, `ICON`, `TYPE`, `PERMISSION`, `STATUS`, `SORT`, `PARENT_ID`) VALUES ('13', '删除权限', '/sys/permission/delete', 'DELETE', '', 'BUTTON', 'sys:permission:delete', '1', '1', '4');
+         </sql>
+     </changeSet>
+
+     <changeSet id="init-sys-role-permission-schema" author="chris" >
+         <comment>init user system admin</comment>
+         <sql>
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '1');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '2');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '3');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '4');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '5');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '6');
+             INSERT INTO `imall`.`sys_role_permission` (`ROLE_ID`, `PERMISSION_ID`) VALUES ('1', '7');
+         </sql>
+     </changeSet>-->
+
+</databaseChangeLog>
