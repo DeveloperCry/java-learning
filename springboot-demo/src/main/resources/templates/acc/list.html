@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="layout :: common_header(~{::title},~{::script})">
+    <head th:replace="layout :: common_header(~{::title}, ~{::link}, ~{::script})">
         <title>系统管理</title>
 
+        <link rel="stylesheet" th:href="@{/css/component/bootstrap-table.min.css}" />
+
         <script th:src="@{/js/account.js}" ></script>
+        <script th:src="@{/js/component/bootstrap-table.min.js}" ></script>
+        <script th:src="@{/js/component/bootstrap-table-locale-all.min.js}" ></script>
     </head>
     <body>
         <div>

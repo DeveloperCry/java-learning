@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: common_header(~{::title},~{})">
+<head th:replace="layout :: common_header(~{::title}, ~{::link}, ~{::script})">
     <title>首页</title>
+    <link rel="stylesheet" th:href="@{/static/css/component/bootstrap-table.min.css}" />
+
+    <script th:src="@{/js/account.js}" ></script>
+    <script th:src="@{/static/js/component/bootstrap-table.min.js}" ></script>
+    <script th:src="@{/static/js/component/bootstrap-table-locale-all.min.js}" ></script>
 </head>
 <body>
 <div th:insert="layout :: layout('system', ~{:: section})">
@@ -56,11 +61,14 @@
                                 checkbox: true, // 显示一个勾选框
                                 align: 'center' // 居中显示
                             }, {
-                                field: 'id', // 返回json数据中的name
+                                //field: 'id', // 返回json数据中的name
                                 title: '编号', // 表格表头显示文字
                                 sortable: true,
                                 align: 'center', // 左右居中
-                                valign: 'middle' // 上下居中
+                                valign: 'middle', // 上下居中
+                                formatter: function (value, row, index) {
+                                    return '<span>' + index + '</span>';
+                                }
                             }, {
                                 field: "ID",
                                 title: "ID",
@@ -110,66 +118,50 @@
                                     }
                                 }
                             }, {
-                                field: "CREATE",
-                                title: "CREATE",
+                                field: "METHOD",
+                                title: "METHOD",
                                 sortable: true,
                                 align: 'center', // 左右居中
                                 valign: 'middle', // 上下居中
                                 clickToSelect: false,
                                 editable: {
                                     type: 'text',
-                                    title: "CREATE",
+                                    title: "METHOD",
                                     mode: "popup",
                                     validate: function (v) {
-                                        if (!v) return 'CREATE cannot be null';
+                                        if (!v) return 'METHOD cannot be null';
 
                                     }
                                 }
                             }, {
-                                field: "READ",
-                                title: "READ",
+                                field: "ICON",
+                                title: "ICON",
                                 sortable: true,
                                 align: 'center', // 左右居中
                                 valign: 'middle', // 上下居中
                                 clickToSelect: false,
                                 editable: {
                                     type: 'text',
-                                    title: "READ",
+                                    title: "ICON",
                                     mode: "popup",
                                     validate: function (v) {
-                                        if (!v) return 'READ cannot be null';
+                                        if (!v) return 'ICON cannot be null';
 
                                     }
                                 }
                             }, {
-                                field: "UPDATE",
-                                title: "UPDATE",
+                                field: "PERMISSION",
+                                title: "PERMISSION",
                                 sortable: true,
                                 align: 'center', // 左右居中
                                 valign: 'middle', // 上下居中
                                 clickToSelect: false,
                                 editable: {
                                     type: 'text',
-                                    title: "UPDATE",
+                                    title: "PERMISSION",
                                     mode: "popup",
                                     validate: function (v) {
-                                        if (!v) return 'UPDATE cannot be null';
-
-                                    }
-                                }
-                            }, {
-                                field: "DELETE",
-                                title: "DELETE",
-                                sortable: true,
-                                align: 'center', // 左右居中
-                                valign: 'middle', // 上下居中
-                                clickToSelect: false,
-                                editable: {
-                                    type: 'text',
-                                    title: "DELETE",
-                                    mode: "popup",
-                                    validate: function (v) {
-                                        if (!v) return 'DELETE cannot be null';
+                                        if (!v) return 'PERMISSION cannot be null';
 
                                     }
                                 }
@@ -186,6 +178,38 @@
                                     mode: "popup",
                                     validate: function (v) {
                                         if (!v) return 'STATUS cannot be null';
+
+                                    }
+                                }
+                            }, {
+                                field: "SORT",
+                                title: "SORT",
+                                sortable: true,
+                                align: 'center', // 左右居中
+                                valign: 'middle', // 上下居中
+                                clickToSelect: false,
+                                editable: {
+                                    type: 'text',
+                                    title: "SORT",
+                                    mode: "popup",
+                                    validate: function (v) {
+                                        if (!v) return 'SORT cannot be null';
+
+                                    }
+                                }
+                            }, {
+                                field: "PARENT_ID",
+                                title: "PARENT_ID",
+                                sortable: true,
+                                align: 'center', // 左右居中
+                                valign: 'middle', // 上下居中
+                                clickToSelect: false,
+                                editable: {
+                                    type: 'text',
+                                    title: "PARENT_ID",
+                                    mode: "popup",
+                                    validate: function (v) {
+                                        if (!v) return 'PARENT_ID cannot be null';
 
                                     }
                                 }
@@ -266,6 +290,22 @@
                                     mode: "popup",
                                     validate: function (v) {
                                         if (!v) return 'EDIT_USER cannot be null';
+
+                                    }
+                                }
+                            }, {
+                                field: "TYPE",
+                                title: "TYPE",
+                                sortable: true,
+                                align: 'center', // 左右居中
+                                valign: 'middle', // 上下居中
+                                clickToSelect: false,
+                                editable: {
+                                    type: 'text',
+                                    title: "TYPE",
+                                    mode: "popup",
+                                    validate: function (v) {
+                                        if (!v) return 'TYPE cannot be null';
 
                                     }
                                 }
@@ -387,24 +427,28 @@
                                     <input type="text" class="form-control" id="URI" name="URI" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="CREATE" class="col-form-label">CREATE:</label>
-                                    <input type="text" class="form-control" id="CREATE" name="CREATE" required>
+                                    <label for="METHOD" class="col-form-label">METHOD:</label>
+                                    <input type="text" class="form-control" id="METHOD" name="METHOD" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="READ" class="col-form-label">READ:</label>
-                                    <input type="text" class="form-control" id="READ" name="READ" required>
+                                    <label for="ICON" class="col-form-label">ICON:</label>
+                                    <input type="text" class="form-control" id="ICON" name="ICON" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="UPDATE" class="col-form-label">UPDATE:</label>
-                                    <input type="text" class="form-control" id="UPDATE" name="UPDATE" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="DELETE" class="col-form-label">DELETE:</label>
-                                    <input type="text" class="form-control" id="DELETE" name="DELETE" required>
+                                    <label for="PERMISSION" class="col-form-label">PERMISSION:</label>
+                                    <input type="text" class="form-control" id="PERMISSION" name="PERMISSION" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="STATUS" class="col-form-label">STATUS:</label>
                                     <input type="text" class="form-control" id="STATUS" name="STATUS" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="SORT" class="col-form-label">SORT:</label>
+                                    <input type="text" class="form-control" id="SORT" name="SORT" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="PARENT_ID" class="col-form-label">PARENT_ID:</label>
+                                    <input type="text" class="form-control" id="PARENT_ID" name="PARENT_ID" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="REMARK" class="col-form-label">REMARK:</label>
@@ -425,6 +469,10 @@
                                 <div class="form-group">
                                     <label for="EDIT_USER" class="col-form-label">EDIT_USER:</label>
                                     <input type="text" class="form-control" id="EDIT_USER" name="EDIT_USER" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="TYPE" class="col-form-label">TYPE:</label>
+                                    <input type="text" class="form-control" id="TYPE" name="TYPE" required>
                                 </div>
 
                                 <button type="reset" id="resetForm" hidden></button>

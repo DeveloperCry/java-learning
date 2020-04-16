@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="common_header(title,links)">
+    <head th:fragment="common_header(title, links, scripts)">
         <meta charset="UTF-8">
         <title th:replace="${title}">OA系统</title>
         <!-- Common styles and scripts -->
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/component/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/component/bootstrap-treeview.min.css}" />
         <link rel="stylesheet" th:href="@{/css/main.css}" />
-        <script th:src="@{/js/jquery-3.4.1.min.js}" ></script>
-        <script th:src="@{/js/bootstrap.min.js}" ></script>
-        <script th:src="@{/js/bootstrap-table.min.js}" ></script>
-        <script th:src="@{/js/bootstrap-table-locale-all.min.js}" ></script>
+
+        <script th:src="@{/js/component/jquery-3.4.1.min.js}" ></script>
+        <script th:src="@{/js/component/jquery.serializejson.min.js}" ></script>
+        <script th:src="@{/js/component/bootstrap.min.js}" ></script>
+        <script th:src="@{/js/component/bootstrap-treeview.min.js}" ></script>
         <script th:src="@{/js/common.js}" ></script>
 
         <!--/* Per-page placeholder for additional links */-->
         <th:block th:replace="${links}" />
+        <th:block th:replace="${scripts}"/>
     </head>
     <body>
         <div class="nav-bar" th:fragment="layout(activePage, content)">
@@ -74,7 +76,7 @@
                                             <div id="collapseSystem" class="collapse" aria-labelledby="systemHeading" data-parent="#systemManagement">
                                                 <div class="collapse-child">
                                                     <a class="nav-link" href="/acc/list">用户管理</a>
-                                                    <a class="nav-link" href="#">角色管理</a>
+                                                    <a class="nav-link" href="/role">角色管理</a>
                                                     <a class="nav-link" href="#">权限管理</a>
                                                 </div>
                                             </div>

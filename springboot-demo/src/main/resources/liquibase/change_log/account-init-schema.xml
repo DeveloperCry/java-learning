@@ -34,6 +34,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="init-add-account-sex" author="chris">
+        <sql>ALTER TABLE ACCOUNT ADD SEX ENUM("男", "女", "保密")</sql>
+    </changeSet>
+
     <changeSet id="init-role-schema" author="chris" >
         <comment>init schema</comment>
         <createTable tableName="ROLE">
@@ -83,7 +87,7 @@
         </createIndex>
     </changeSet>
 
-    <changeSet id="init-permission-schema" author="chris" >
+    <!--<changeSet id="init-permission-schema" author="chris" >
         <comment>init schema</comment>
         <createTable tableName="PERMISSION">
             <column name="ID" type="INT(11)" autoIncrement="${autoIncrement}">
@@ -107,6 +111,38 @@
             <column name="EDIT_DATE" type="TIMESTAMP"/>
             <column name="EDIT_USER" type="INT(11)"/>
         </createTable>
+    </changeSet>-->
+
+    <changeSet id="init-permission-schema" author="chris" >
+        <comment>init schema</comment>
+        <createTable tableName="PERMISSION">
+            <column name="ID" type="INT(11)" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(64)" remarks="权限名称" >
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="URI" type="VARCHAR(255)" remarks="请求路径" >
+            </column>
+            <column name="METHOD" type="VARCHAR(8)" remarks="菜单请求方法" />
+            <column name="ICON" type="VARCHAR(255)" remarks="菜单图标" />
+            <column name="PERMISSION" type="VARCHAR(255)" remarks="权限" >
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="STATUS" type="TINYINT" remarks="菜单状态(1是true，代表可用；0是false，代表不可用)" />
+            <column name="SORT" type="INT" remarks="排序" />
+            <column name="PARENT_ID" type="INT(11)" remarks="父级菜单" defaultValue="0" />
+            <column name="REMARK" type="VARCHAR(300)" remarks="备注" />
+
+            <column name="CREATE_DATE" type="TIMESTAMP"/>
+            <column name="CREATE_USER" type="INT(11)"/>
+            <column name="EDIT_DATE" type="TIMESTAMP"/>
+            <column name="EDIT_USER" type="INT(11)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="init-add-permission_type" author="chris">
+        <sql>ALTER TABLE PERMISSION ADD TYPE ENUM("DIRECTORY", "MENU", "BUTTON")</sql>
     </changeSet>
 
     <changeSet id="init-role-permission-schema" author="chris" >
@@ -128,6 +164,7 @@
             <column name="EDIT_USER" type="INT(11)"/>
         </createTable>
     </changeSet>
+
 
     <changeSet id="init-role-permission-idx-key-schema" author="chris">
         <comment>init schema</comment>
