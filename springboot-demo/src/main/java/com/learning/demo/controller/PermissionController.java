@@ -1,20 +1,45 @@
 package com.learning.demo.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.learning.demo.response.ResponseSummary;
 import com.learning.demo.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import com.learning.demo.entity.Permission;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 
-@Service
-@RestController
-@RequestMapping(path = "api/permission")
+@Controller
+@RequestMapping(path = "permission")
 public class PermissionController {
     @Autowired
     PermissionService permissionService;
+
+    @GetMapping("")
+    public String list() {
+        return "permission/list";
+    }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public ResponseSummary list(ModelMap map,
+                                @RequestParam(value = "pageNumber", required = false, defaultValue = "1") @Min(1) Integer pageNumber,
+                                @RequestParam(value = "pageSize", required = false, defaultValue = "10") @Max(100) @Min(1) Integer pageSize) {
+        IPage<Permission> permissionPage = new Page<>();
+        permissionPage.setCurrent(pageNumber);
+        permissionPage.setSize(pageSize);
+
+        this.permissionService.page(permissionPage);
+        System.out.println("page cot:" + permissionPage.getPages());
+        return ResponseSummary.SUCCESS(permissionPage);
+    }
 
 //    @RequestMapping(path = "", method = RequestMethod.GET)
 //    @Transactional

@@ -142,7 +142,7 @@
     </changeSet>
 
     <changeSet id="init-add-permission_type" author="chris">
-        <sql>ALTER TABLE PERMISSION ADD TYPE ENUM("DIRECTORY", "MENU", "BUTTON")</sql>
+        <sql>ALTER TABLE PERMISSION ADD TYPE ENUM("目录", "菜单", "按钮")</sql>
     </changeSet>
 
     <changeSet id="init-role-permission-schema" author="chris" >

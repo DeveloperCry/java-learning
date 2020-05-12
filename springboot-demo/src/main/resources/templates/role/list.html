@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/component/toastr.min.css}">
 
     <script th:src="@{/js/account.js}" ></script>
-    <script th:src="@{/js/bootstrap-table.js}" ></script>
+    <script th:src="@{/js/bootstrap-table.min.js}" ></script>
     <script th:src="@{/js/component/bootstrap-table-locale-chinese.min.js}" ></script>
     <script th:src="@{/js/component/bootstrap-switch.min.js}" ></script>
     <script th:src="@{/js/component/toastr.min.js}"></script>
@@ -20,7 +20,7 @@
 <div>
     <div th:insert="layout :: layout('system', ~{:: section})">
         <section>
-            <div th:fragment="list" xmlns:th="http://www.thymeleaf.org" style="height: 100%;width: 100%">
+            <div style="height: 100%;width: 100%">
                 <div id="toolbar">
                     <button type="btn" class="btn btn-primary" onclick="showEditModal()">
                         <i class="fas fa-plus"></i> 添加
@@ -32,7 +32,7 @@
                 <table id="table-main" class="table table-striped"></table>
                 <div id="button-toolbar"></div>
 
-                <!--删除警告-->
+                <!--&lt;!&ndash;删除警告&ndash;&gt;
                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <!--编辑表单-->
                 <!-- Modal -->

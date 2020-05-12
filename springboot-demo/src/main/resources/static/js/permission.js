@@ -38,7 +38,7 @@ window.operateEvents = {
             .then((willDelete) => {
                 if (willDelete) {
                     const url = "role/delete/" + row.id;
-                    request('post', url, '', '删除成功', '删除失败')
+                    request('post', url, '', '删除成功', '删除失败', '#table-main')
                 } else {
                     // swal("Your imaginary file is safe!");
                 }
@@ -47,7 +47,7 @@ window.operateEvents = {
 }
 
 function initTable() {
-    var requestUri = "role/list"
+    var requestUri = "permission/list"
 
     $("#table-main").bootstrapTable({
         url: requestUri, // 获取表格数据的url
@@ -80,7 +80,6 @@ function initTable() {
             };
         },
 
-
         columns: [
             {
                 checkbox: true, // 显示一个勾选框
@@ -91,55 +90,90 @@ function initTable() {
                 align: 'center', // 左右居中
                 valign: 'middle', // 上下居中
                 formatter: function (value, row, index) {
-                    // return '<span>' + index + '</span>';
                     return index + 1;
                 }
             }, {
-                field: "name",
-                title: "角色名称",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
-                field: "status",
-                title: "状态",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false,
+            field: "name",
+            title: "权限名称",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "uri",
+            title: "请求路径",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "method",
+            title: "请求方法",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "icon",
+            title: "菜单图标",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "permission",
+            title: "权限值",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "status",
+            title: "状态",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false,
                 formatter: function (value, row, index) {
                     return value === 0 ? '不可用' : '可用';
                 }
-            }, {
-                field: "remark",
-                title: "备注",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
-                field: "createDate",
-                title: "CREATE_DATE",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
-                field: "CREATE_USER",
-                title: "CREATE_USER",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
-                field: "EDIT_DATE",
-                title: "EDIT_DATE",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
-                field: "EDIT_USER",
-                title: "EDIT_USER",
-                align: 'center', // 左右居中
-                valign: 'middle', // 上下居中
-                clickToSelect: false
-            }, {
+        }, {
+            field: "sort",
+            title: "排序号",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "remark",
+            title: "备注",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "createDate",
+            title: "创建时间",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "createUser",
+            title: "创建人",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "editDate",
+            title: "最后修改时间",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "editUser",
+            title: "最后修改人",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
+            field: "type",
+            title: "类型",
+            align: 'center', // 左右居中
+            valign: 'middle', // 上下居中
+            clickToSelect: false
+        }, {
                 title: "操作",
                 align: 'center',
                 valign: 'middle',
@@ -184,10 +218,10 @@ function saveRole() {
     let option = "";
 
     if (isBlank(roleId) || roleId <= 0) {
-        url = "role/add";
+        url = "permission/add";
         option = "添加";
     } else {
-        url = "role/update/" + roleId;
+        url = "permission/update/" + roleId;
         option = "修改";
     }
 
@@ -207,13 +241,13 @@ function saveRole() {
 }
 
 function deleteOne(id) {
-    var url = "role/delete/" + id;
+    var url = "permission/delete/" + id;
     request('delete', url, '', '删除成功', '删除失败', '#table-main')
 }
 
 function deleteBatch() {
     var selectedRows = $("#table-main").bootstrapTable('getSelections');
-    var url = "role/list" + '?';
+    var url = "permission/list" + '?';
     console.log("rows: " + JSON.stringify(selectedRows));
     if (selectedRows == null || selectedRows.length == 0) {
         $.snackbar({content: "请先选中行"});
@@ -225,5 +259,3 @@ function deleteBatch() {
     }
     request('delete', url, '', '批量删除成功', '批量删除失败', '#table-main')
 }
-
-
