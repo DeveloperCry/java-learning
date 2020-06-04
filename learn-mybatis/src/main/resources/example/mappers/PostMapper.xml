@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.example.dao.PostMapper">
-  <resultMap id="BaseResultMap" type="learning.example.enity.Post">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Post">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="BLOG_ID" jdbcType="INTEGER" property="blogId" />
     <result column="AUTHOR_ID" jdbcType="INTEGER" property="authorId" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     ID, BLOG_ID, AUTHOR_ID, SECTION, SUBJECT, DRAFT, BODY, CREATED_ON, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.PostExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.PostExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from post
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.PostExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.PostExample">
     delete from post
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Post">
+  <insert id="insert" parameterType="com.learning.spring.enity.Post">
     insert into post (ID, BLOG_ID, AUTHOR_ID, 
       SECTION, SUBJECT, DRAFT, 
       BODY, CREATED_ON, EDIT_DATE
@@ -113,7 +113,7 @@
       #{body,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Post">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Post">
     insert into post
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.PostExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.PostExample" resultType="java.lang.Long">
     select count(*) from post
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -230,7 +230,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Post">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Post">
     update post
     <set>
       <if test="blogId != null">
@@ -260,7 +260,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Post">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Post">
     update post
     set BLOG_ID = #{blogId,jdbcType=INTEGER},
       AUTHOR_ID = #{authorId,jdbcType=INTEGER},
@@ -272,7 +272,7 @@
       EDIT_DATE = #{editDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="learning.example.enity.Post">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Post">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="BLOG_ID" jdbcType="INTEGER" property="blogId" />
     <result column="AUTHOR_ID" jdbcType="INTEGER" property="authorId" />
@@ -344,7 +344,7 @@
   <sql id="Base_Column_List">
     ID, BLOG_ID, AUTHOR_ID, SECTION, SUBJECT, DRAFT, BODY, CREATED_ON, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.PostExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.PostExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -368,13 +368,13 @@
     delete from post
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.PostExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.PostExample">
     delete from post
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Post">
+  <insert id="insert" parameterType="com.learning.spring.enity.Post">
     insert into post (ID, BLOG_ID, AUTHOR_ID, 
       SECTION, SUBJECT, DRAFT, 
       BODY, CREATED_ON, EDIT_DATE
@@ -384,7 +384,7 @@
       #{body,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Post">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Post">
     insert into post
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -445,7 +445,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.PostExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.PostExample" resultType="java.lang.Long">
     select count(*) from post
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -501,7 +501,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Post">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Post">
     update post
     <set>
       <if test="blogId != null">
@@ -531,7 +531,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Post">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Post">
     update post
     set BLOG_ID = #{blogId,jdbcType=INTEGER},
       AUTHOR_ID = #{authorId,jdbcType=INTEGER},

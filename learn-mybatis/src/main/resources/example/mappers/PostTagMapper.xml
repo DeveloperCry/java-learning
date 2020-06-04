@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.example.dao.PostTagMapper">
-  <resultMap id="BaseResultMap" type="learning.example.enity.PostTag">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.PostTag">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="POST_ID" jdbcType="INTEGER" property="postId" />
     <result column="TAG_ID" jdbcType="INTEGER" property="tagId" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     ID, POST_ID, TAG_ID, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.PostTagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.PostTagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,19 +93,19 @@
     delete from post_tag
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.PostTagExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.PostTagExample">
     delete from post_tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.PostTag">
+  <insert id="insert" parameterType="com.learning.spring.enity.PostTag">
     insert into post_tag (ID, POST_ID, TAG_ID, 
       CREATE_DATE, EDIT_DATE)
     values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, 
       #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.PostTag">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.PostTag">
     insert into post_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.PostTagExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.PostTagExample" resultType="java.lang.Long">
     select count(*) from post_tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.PostTag">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.PostTag">
     update post_tag
     <set>
       <if test="postId != null">
@@ -200,7 +200,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.PostTag">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.PostTag">
     update post_tag
     set POST_ID = #{postId,jdbcType=INTEGER},
       TAG_ID = #{tagId,jdbcType=INTEGER},
@@ -208,7 +208,7 @@
       EDIT_DATE = #{editDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="learning.example.enity.PostTag">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.PostTag">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="POST_ID" jdbcType="INTEGER" property="postId" />
     <result column="TAG_ID" jdbcType="INTEGER" property="tagId" />
@@ -276,7 +276,7 @@
   <sql id="Base_Column_List">
     ID, POST_ID, TAG_ID, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.PostTagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.PostTagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -300,19 +300,19 @@
     delete from post_tag
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.PostTagExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.PostTagExample">
     delete from post_tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.PostTag">
+  <insert id="insert" parameterType="com.learning.spring.enity.PostTag">
     insert into post_tag (ID, POST_ID, TAG_ID, 
       CREATE_DATE, EDIT_DATE)
     values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, 
       #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.PostTag">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.PostTag">
     insert into post_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -349,7 +349,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.PostTagExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.PostTagExample" resultType="java.lang.Long">
     select count(*) from post_tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -389,7 +389,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.PostTag">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.PostTag">
     update post_tag
     <set>
       <if test="postId != null">
@@ -407,7 +407,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.PostTag">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.PostTag">
     update post_tag
     set POST_ID = #{postId,jdbcType=INTEGER},
       TAG_ID = #{tagId,jdbcType=INTEGER},

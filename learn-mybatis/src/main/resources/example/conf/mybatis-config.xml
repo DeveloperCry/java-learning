@@ -25,12 +25,12 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="blog" type="learning.example.enity.Blog" />
-		<typeAlias alias="page" type="learning.example.enity.Page" />
-		<typeAlias alias="user" type="learning.example.enity.User" />
+		<typeAlias alias="blog" type="com.learning.spring.enity.Blog" />
+		<typeAlias alias="page" type="com.learning.spring.enity.Page" />
+		<typeAlias alias="user" type="com.learning.spring.enity.User" />
 	</typeAliases>
 	
-	<objectFactory type="learning.example.factory.ExampleObjectFactory">
+	<objectFactory type="com.learning.spring.factory.ExampleObjectFactory">
 		<property name="someProperty" value="100"/>
 		<property name="someProperty1" value="1000"/>
 	</objectFactory>
@@ -40,7 +40,7 @@
 			<property name="prop1" value="prop1"/>
 			<property name="prop2" value="prop2"/>
 		</plugin> -->
-		<plugin interceptor="learning.example.plugins.PageInterceptor">
+		<plugin interceptor="com.learning.spring.plugins.PageInterceptor">
 			<property name="databaseType" value="mysql"/>
 		</plugin>
 	</plugins>
@@ -80,8 +80,8 @@
 		3.使用映射接口名称 <mappers> <mapper class="XXX.YYY.ZZZ.ClassName" /> </mappers> 
 		4.使用包名称 <mappers> <package name="XXX/YYY/ZZZ" /> </mappers> -->
 	<mappers>
-		<mapper class="learning.example.mapper.BlogMapper" />
-		<mapper class="learning.example.mapper.UserMapper" />
+		<mapper class="com.learning.spring.mapper.BlogMapper" />
+		<mapper class="com.learning.spring.mapper.UserMapper" />
 		<mapper resource="com/mybatis/example/mappers/UserMapper.xml" />
 		<mapper resource="com/mybatis/example/mappers/BlogMapper.xml" />
 	</mappers>

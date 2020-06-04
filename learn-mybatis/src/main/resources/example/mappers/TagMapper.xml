@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.example.dao.TagMapper">
-  <resultMap id="BaseResultMap" type="learning.example.enity.Tag">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Tag">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="NAME" jdbcType="INTEGER" property="name" />
     <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     ID, NAME, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.TagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.TagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from tag
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.TagExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.TagExample">
     delete from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Tag">
+  <insert id="insert" parameterType="com.learning.spring.enity.Tag">
     insert into tag (ID, NAME, CREATE_DATE, 
       EDIT_DATE)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
       #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Tag">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Tag">
     insert into tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.TagExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.TagExample" resultType="java.lang.Long">
     select count(*) from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Tag">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Tag">
     update tag
     <set>
       <if test="name != null">
@@ -186,14 +186,14 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Tag">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Tag">
     update tag
     set NAME = #{name,jdbcType=INTEGER},
       CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
       EDIT_DATE = #{editDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="learning.example.enity.Tag">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Tag">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="NAME" jdbcType="INTEGER" property="name" />
     <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     ID, NAME, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.TagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.TagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from tag
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.TagExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.TagExample">
     delete from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Tag">
+  <insert id="insert" parameterType="com.learning.spring.enity.Tag">
     insert into tag (ID, NAME, CREATE_DATE, 
       EDIT_DATE)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
       #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Tag">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Tag">
     insert into tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.TagExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.TagExample" resultType="java.lang.Long">
     select count(*) from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Tag">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Tag">
     update tag
     <set>
       <if test="name != null">
@@ -378,7 +378,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Tag">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Tag">
     update tag
     set NAME = #{name,jdbcType=INTEGER},
       CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},

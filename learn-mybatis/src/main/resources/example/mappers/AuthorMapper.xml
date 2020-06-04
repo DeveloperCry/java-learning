@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.example.dao.AuthorMapper">
-  <resultMap id="BaseResultMap" type="learning.example.enity.Author">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Author">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List">
     ID, USER_NAME, PASSWORD, BIO, EMAIL, FAVOURITE_SECTION, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.AuthorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.AuthorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -96,13 +96,13 @@
     delete from author
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.AuthorExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.AuthorExample">
     delete from author
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Author">
+  <insert id="insert" parameterType="com.learning.spring.enity.Author">
     insert into author (ID, USER_NAME, PASSWORD, 
       BIO, EMAIL, FAVOURITE_SECTION, 
       CREATE_DATE, EDIT_DATE)
@@ -110,7 +110,7 @@
       #{bio,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{favouriteSection,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Author">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Author">
     insert into author
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.AuthorExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.AuthorExample" resultType="java.lang.Long">
     select count(*) from author
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Author">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Author">
     update author
     <set>
       <if test="userName != null">
@@ -244,7 +244,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Author">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Author">
     update author
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
@@ -255,7 +255,7 @@
       EDIT_DATE = #{editDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="learning.example.enity.Author">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Author">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
@@ -326,7 +326,7 @@
   <sql id="Base_Column_List">
     ID, USER_NAME, PASSWORD, BIO, EMAIL, FAVOURITE_SECTION, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.AuthorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.AuthorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -350,13 +350,13 @@
     delete from author
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.AuthorExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.AuthorExample">
     delete from author
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Author">
+  <insert id="insert" parameterType="com.learning.spring.enity.Author">
     insert into author (ID, USER_NAME, PASSWORD, 
       BIO, EMAIL, FAVOURITE_SECTION, 
       CREATE_DATE, EDIT_DATE)
@@ -364,7 +364,7 @@
       #{bio,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{favouriteSection,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Author">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Author">
     insert into author
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -419,7 +419,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.AuthorExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.AuthorExample" resultType="java.lang.Long">
     select count(*) from author
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -471,7 +471,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Author">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Author">
     update author
     <set>
       <if test="userName != null">
@@ -498,7 +498,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Author">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Author">
     update author
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},

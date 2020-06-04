@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.example.dao.CommentsMapper">
-  <resultMap id="BaseResultMap" type="learning.example.enity.Comments">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Comments">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="POST_ID" jdbcType="INTEGER" property="postId" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     ID, POST_ID, NAME, COMMENT, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.CommentsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.CommentsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from comments
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.CommentsExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.CommentsExample">
     delete from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Comments">
+  <insert id="insert" parameterType="com.learning.spring.enity.Comments">
     insert into comments (ID, POST_ID, NAME, 
       COMMENT, CREATE_DATE, EDIT_DATE
       )
@@ -108,7 +108,7 @@
       #{comment,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Comments">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Comments">
     insert into comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.CommentsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.CommentsExample" resultType="java.lang.Long">
     select count(*) from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Comments">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Comments">
     update comments
     <set>
       <if test="postId != null">
@@ -216,7 +216,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Comments">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Comments">
     update comments
     set POST_ID = #{postId,jdbcType=INTEGER},
       NAME = #{name,jdbcType=VARCHAR},
@@ -225,7 +225,7 @@
       EDIT_DATE = #{editDate,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="learning.example.enity.Comments">
+  <resultMap id="BaseResultMap" type="com.learning.spring.enity.Comments">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="POST_ID" jdbcType="INTEGER" property="postId" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
@@ -294,7 +294,7 @@
   <sql id="Base_Column_List">
     ID, POST_ID, NAME, COMMENT, CREATE_DATE, EDIT_DATE
   </sql>
-  <select id="selectByExample" parameterType="learning.example.enity.CommentsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.learning.spring.enity.CommentsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -318,13 +318,13 @@
     delete from comments
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="learning.example.enity.CommentsExample">
+  <delete id="deleteByExample" parameterType="com.learning.spring.enity.CommentsExample">
     delete from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="learning.example.enity.Comments">
+  <insert id="insert" parameterType="com.learning.spring.enity.Comments">
     insert into comments (ID, POST_ID, NAME, 
       COMMENT, CREATE_DATE, EDIT_DATE
       )
@@ -332,7 +332,7 @@
       #{comment,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="learning.example.enity.Comments">
+  <insert id="insertSelective" parameterType="com.learning.spring.enity.Comments">
     insert into comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -375,7 +375,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="learning.example.enity.CommentsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.learning.spring.enity.CommentsExample" resultType="java.lang.Long">
     select count(*) from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -419,7 +419,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="learning.example.enity.Comments">
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.spring.enity.Comments">
     update comments
     <set>
       <if test="postId != null">
@@ -440,7 +440,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="learning.example.enity.Comments">
+  <update id="updateByPrimaryKey" parameterType="com.learning.spring.enity.Comments">
     update comments
     set POST_ID = #{postId,jdbcType=INTEGER},
       NAME = #{name,jdbcType=VARCHAR},
