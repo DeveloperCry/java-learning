@@ -1,6 +1,7 @@
 package com.learning.demo.filter;
 
 import com.learning.demo.constants.Constant;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -8,7 +9,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 
+@Slf4j
 @Component
 @WebFilter
 public class SecurityFilter implements Filter {
@@ -24,19 +27,27 @@ public class SecurityFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String uri = request.getRequestURI();
-        System.out.println("uri:" + uri);
-        if (canAccess(uri)) {
+        try {
+//            String uri = request.getRequestURI();
+//            System.out.println("uri:" + uri);
+//            if (canAccess(uri)) {
+//                filterChain.doFilter(servletRequest, servletResponse);
+//                return;
+//            } else {
+//                Object session = request.getSession().getAttribute(Constant.ACCOUNT_SESSION);
+//                if (session == null) {
+//                    response.sendRedirect("/login");
+//                    return;
+//                }
+//            }
+            log.info("执行filter。。。。。。。。");
             filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        } else {
-            Object session = request.getSession().getAttribute(Constant.ACCOUNT_SESSION);
-            if (session == null) {
-                response.sendRedirect("/login");
-                return;
-            }
+            log.info("在doFilter之后完成调用。。。。");
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        } finally {
+            log.info("Filter 完成。。。。。。。。。。。");
         }
-        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     private boolean canAccess(String uri) {

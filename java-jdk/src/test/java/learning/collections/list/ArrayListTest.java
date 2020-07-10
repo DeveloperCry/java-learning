@@ -1,4 +1,4 @@
-package learning.list;
+package learning.collections.list;
 
 import learning.pojo.Person;
 
