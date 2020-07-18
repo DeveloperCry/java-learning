@@ -11,11 +11,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Method;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class RemoteAspect {
 
-    @Before("@With(com.learning.demo.remote.annotation.Remote) && @annotation(org.springframework.web.bind.annotation.RequestMapping))")
+//    @Before("@With(com.learning.demo.remote.annotation.Remote) && @annotation(org.springframework.web.bind.annotation.RequestMapping))")
     public Object before(ProceedingJoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
