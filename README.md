@@ -11,3 +11,5 @@
 该模块主要是MQ模块
 #### learn-jvm
 该模块主要是JVM模块
+#### learn-arithmetic
+该模块主要是LeetCode的算法题
